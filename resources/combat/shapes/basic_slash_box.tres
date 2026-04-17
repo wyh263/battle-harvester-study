@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShapeDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Systems/Combat/Behaviors/ShapeDefinition.cs" id="1_shape"]
+
+[resource]
+script = ExtResource("1_shape")
+ShapeType = 0
+Size = Vector3(1.1, 0.9, 1.0)
+Offset = Vector3(0, 0.45, -1.0)
+RotationDegrees = Vector3(0, 0, 0)
+MaxHits = 1
+AllowRepeatHitOnSameTarget = false
+RepeatHitInterval = 0.0
+DebugColor = Color(1, 0.4, 0.2, 0.2)
+ShowDebugPreview = true

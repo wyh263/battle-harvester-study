@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConeAttackBehaviorDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Systems/Combat/Behaviors/ConeAttackBehaviorDefinition.cs" id="1_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/shapes/wide_cone_broadphase.tres" id="2_shape"]
+
+[resource]
+script = ExtResource("1_behavior")
+BroadPhaseShape = ExtResource("2_shape")
+ConeAngleDegrees = 95.0
+ConeRange = 3.4

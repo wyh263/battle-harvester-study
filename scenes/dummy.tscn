@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/Dummy.cs" id="1_dummy"]
+[ext_resource type="Script" path="res://scripts/attributes/StatsComponent.cs" id="2_stats"]
+[ext_resource type="Script" path="res://scripts/locomotion/Mover.cs" id="3_mover"]
+[ext_resource type="Script" path="res://scripts/locomotion/ForcedMovementComponent.cs" id="3_forced"]
+[ext_resource type="Script" path="res://Systems/Combat/Core/Hurtbox.cs" id="4_hurtbox"]
+[ext_resource type="Script" path="res://Systems/Combat/Core/Hitbox.cs" id="5_hitbox"]
+[ext_resource type="Script" path="res://scripts/reactions/HitReactionComponent.cs" id="6_hitreaction"]
+[ext_resource type="Script" path="res://Systems/Combat/Core/CombatResolver.cs" id="7_resolver"]
+[ext_resource type="Script" path="res://Systems/Combat/Core/AttackExecutor.cs" id="8_executor"]
+[ext_resource type="Script" path="res://scripts/locomotion/MovementHost.cs" id="9_movehost"]
+[ext_resource type="Script" path="res://scripts/effects/StatusEffectComponent.cs" id="10_status"]
+[ext_resource type="Script" path="res://scripts/effects/LaunchMotionComponent.cs" id="11_launch"]
+
+[sub_resource type="CapsuleShape3D" id="1"]
+
+[sub_resource type="CylinderShape3D" id="2"]
+height = 0.5
+radius = 0.45
+
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(1.1, 0.9, 1.0)
+
+[sub_resource type="BoxMesh" id="4"]
+size = Vector3(1.1, 0.9, 1.0)
+
+[sub_resource type="StandardMaterial3D" id="5"]
+transparency = 1
+albedo_color = Color(0.266667, 0.780392, 1, 0.2)
+emission_enabled = true
+emission = Color(0.266667, 0.780392, 1, 1)
+emission_energy_multiplier = 0.6
+cull_mode = 2
+
+[node name="Dummy" type="CharacterBody3D"]
+script = ExtResource("1_dummy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("1")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visuals"]
+position = Vector3(0, 1, 0)
+pixel_size = 0.01
+billboard = 1
+
+[node name="DirectionLabel" type="Label3D" parent="Visuals"]
+text = "DUMMY"
+position = Vector3(0, 2.1, 0)
+billboard = 1
+modulate = Color(0.776471, 0.960784, 1, 1)
+font_size = 48
+outline_modulate = Color(0.0941176, 0.0941176, 0.0941176, 1)
+outline_size = 8
+
+[node name="Components" type="Node" parent="."]
+
+[node name="Stats" type="Node" parent="Components"]
+script = ExtResource("2_stats")
+
+[node name="Mover" type="Node" parent="Components"]
+script = ExtResource("3_mover")
+
+[node name="ForcedMovement" type="Node" parent="Components"]
+script = ExtResource("3_forced")
+
+[node name="HitReaction" type="Node" parent="Components"]
+script = ExtResource("6_hitreaction")
+HitFlashColor = Color(1, 0.45, 0.45, 1)
+
+[node name="CombatResolver" type="Node" parent="Components"]
+script = ExtResource("7_resolver")
+
+[node name="AttackExecutor" type="Node" parent="Components"]
+script = ExtResource("8_executor")
+
+[node name="MovementHost" type="Node" parent="Components"]
+script = ExtResource("9_movehost")
+
+[node name="StatusEffects" type="Node" parent="Components"]
+script = ExtResource("10_status")
+
+[node name="LaunchMotion" type="Node" parent="Components"]
+script = ExtResource("11_launch")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+script = ExtResource("4_hurtbox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+position = Vector3(0, 0.25, 0)
+shape = SubResource("2")
+
+[node name="Combat" type="Node3D" parent="."]
+
+[node name="Hitbox" type="Area3D" parent="Combat"]
+script = ExtResource("5_hitbox")
+position = Vector3(0, 0.45, -1.0)
+ShowDebugPreview = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Combat/Hitbox"]
+shape = SubResource("3")
+
+[node name="DebugPreview" type="MeshInstance3D" parent="Combat/Hitbox"]
+visible = false
+mesh = SubResource("4")
+surface_material_override/0 = SubResource("5")

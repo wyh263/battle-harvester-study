@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DamageEffectDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Systems/Combat/Effects/DamageEffectDefinition.cs" id="1_effect"]
+
+[resource]
+script = ExtResource("1_effect")
+Damage = 33
+KnockbackForce = 0.0
+CausesForcedMovement = false
+ForcedMovementDuration = 0.1
+ForcedMovementPriority = 10
