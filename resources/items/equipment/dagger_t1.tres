@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/equipment/WeaponEquipmentDefinition.cs" id="2_equipment"]
+[ext_resource type="Resource" path="res://resources/combat/movesets/dagger_moveset.tres" id="3_moveset"]
+
+[sub_resource type="Resource" id="Equipment"]
+script = ExtResource("2_equipment")
+DisplayVariant = "T1"
+Tier = 1
+AllowedSlots = Array[int]([1, 2])
+WeaponArchetypeId = 1
+WeaponFamilyId = 8
+WeaponTraitMask = 12
+MoveSet = ExtResource("3_moveset")
+WeaponSkillSlotCount = 3
+AllowedWeaponSkillTags = Array[String](["dagger_skill", "bleed"])
+AttackSpeedMultiplier = 1.35
+BaseMultiplier = 0.8
+PenetrationTier = 1.0
+PenetrationTierBias = -0.5
+DestructionMultiplierBias = 0.9
+MaxDurability = 100.0
+CritRate = 0.08
+CritDamage = 1.6
+LightDurabilityLoss = 0.16
+HeavyDurabilityLoss = 0.35
+SkillDurabilityLoss = 0.8
+UltimateDurabilityLoss = 4.0
+ExecutionHealthThreshold = 0.2
+ExecutionMinBleedStacks = 10
+BleedCycleSeconds = 5.0
+FirstHitCritRateBonus = 0.1
+FirstHitCritDamageBonus = 0.35
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "dagger_t1"
+DisplayName = "T1 Dagger"
+Category = 1
+GridWidth = 1
+CanRotate = false
+BaseValue = 2800
+Tags = Array[String](["equipment", "weapon", "sharp", "dagger", "tier1"])
+Equipment = SubResource("Equipment")

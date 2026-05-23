@@ -1,9 +1,16 @@
 using Godot;
+using System;
 
-namespace BattleHarvesterStudy;
+namespace BattleHarvesterStudy.Locomotion;
 
 public partial class Mover : Node
 {
+	[Export]
+	public NodePath BodyPath { get; set; } = new("../..");
+
+	[Export]
+	public NodePath StatsPath { get; set; } = new("../Stats");
+
 	private CharacterBody3D _body = null!;
 	private StatsComponent _stats = null!;
 	private Vector3 _externalVelocity = Vector3.Zero;
@@ -16,8 +23,8 @@ public partial class Mover : Node
 
 	public override void _Ready()
 	{
-		_body = GetParent().GetParent<CharacterBody3D>();
-		_stats = GetNode<StatsComponent>("../Stats");
+		_body = ResolveBody();
+		_stats = ResolveStats();
 	}
 
 	public void Move(Vector3 direction, double delta)
@@ -76,5 +83,34 @@ public partial class Mover : Node
 	public void ApplyImpulse(Vector3 force)
 	{
 		_externalVelocity += force;
+	}
+
+	private CharacterBody3D ResolveBody()
+	{
+		CharacterBody3D? body = GetNodeOrNull<CharacterBody3D>(BodyPath);
+		if (body != null)
+		{
+			return body;
+		}
+
+		return GetOwner<CharacterBody3D>();
+	}
+
+	private StatsComponent ResolveStats()
+	{
+		StatsComponent? stats = GetNodeOrNull<StatsComponent>(StatsPath);
+		if (stats != null)
+		{
+			return stats;
+		}
+
+		CharacterBody3D? owner = GetOwnerOrNull<CharacterBody3D>();
+		stats = owner?.GetNodeOrNull<StatsComponent>("Components/Stats");
+		if (stats != null)
+		{
+			return stats;
+		}
+
+		throw new InvalidOperationException("Mover requires a StatsComponent reference.");
 	}
 }

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/items/WeaponSkillItemDefinition.cs" id="2_weapon_skill"]
+[ext_resource type="Resource" path="res://resources/combat/skills/dagger_shadow_flurry.tres" id="3_skill"]
+
+[sub_resource type="Resource" id="WeaponSkill"]
+script = ExtResource("2_weapon_skill")
+Skill = ExtResource("3_skill")
+GrantedUses = 10
+ConsumeOnInstall = true
+ConsumeUsesOnCast = true
+CanBeLearned = true
+UnlockConditionType = 1
+RequiredUseCount = 12
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 8
+RequiredWeaponTraitMask = 4
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "weapon_skill_dagger_shadow_flurry"
+DisplayName = "Dagger Shadow Flurry Manual"
+Category = 11
+GridWidth = 1
+GridHeight = 2
+CanRotate = true
+BaseValue = 20000
+Tags = Array[String](["weapon_skill", "dagger", "manual"])
+WeaponSkill = SubResource("WeaponSkill")

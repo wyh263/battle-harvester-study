@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/equipment/GloveEquipmentDefinition.cs" id="2_equipment"]
+
+[sub_resource type="Resource" id="Equipment"]
+script = ExtResource("2_equipment")
+DisplayVariant = "T1"
+Tier = 1
+AllowedSlots = Array[int]([3])
+AttackPower = 15.0
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "gloves_t1"
+DisplayName = "T1 Power Gloves"
+Category = 10
+GridWidth = 2
+CanRotate = true
+BaseValue = 1200
+Tags = Array[String](["equipment", "gloves", "tier1"])
+Equipment = SubResource("Equipment")

@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="LaunchEffectDefinition" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Systems/Combat/Effects/LaunchEffectDefinition.cs" id="1_effect"]
+[ext_resource type="Script" path="res://scripts/combat/effects/LaunchEffectDefinition.cs" id="1_effect"]
 
 [resource]
 script = ExtResource("1_effect")
 Height = 1.0
 ForwardDistance = 1.4
 DurationSeconds = 0.35
+

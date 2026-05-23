@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="BleedEffectDefinition" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Systems/Combat/Effects/BleedEffectDefinition.cs" id="1_effect"]
+[ext_resource type="Script" path="res://scripts/combat/effects/BleedEffectDefinition.cs" id="1_effect"]
 
 [resource]
 script = ExtResource("1_effect")
 DamagePerTick = 12
 TickIntervalSeconds = 1.0
 TotalDurationSeconds = 5.0
+

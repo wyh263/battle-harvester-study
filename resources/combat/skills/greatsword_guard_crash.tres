@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_attack_followup_cone_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/damage_33_no_knockback.tres" id="3_damage"]
+[ext_resource type="Resource" path="res://resources/combat/effects/launch_small.tres" id="4_launch"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "greatsword_guard_crash"
+DisplayName = "Greatsword Guard Crash"
+SkillTags = Array[String](["weapon_skill", "sharp", "greatsword_skill", "armor_break"])
+LoadoutCategory = 0
+ActionType = 2
+SkillMultiplier = 1.45
+PowerTier = 3.0
+DestructionMultiplier = 2.1
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 4
+RequiredWeaponTraitMask = 64
+StartupLabel = "RAISE"
+ActiveLabel = "CRASH"
+RecoveryLabel = "DRAG"
+StartupSeconds = 0.22
+ActiveSeconds = 0.18
+RecoverySeconds = 0.52
+BaseCooldownSeconds = 1.6
+BaseGlobalCooldownSeconds = 0.24
+CanBeInterruptedDuringStartup = false
+InterruptArmorDuringStartup = 3
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage"), ExtResource("4_launch")]

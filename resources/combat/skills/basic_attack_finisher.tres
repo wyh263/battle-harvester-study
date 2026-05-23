@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_attack_finisher_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/weapon_finisher_damage_33.tres" id="3_damage"]
+[ext_resource type="Resource" path="res://resources/combat/requirements/basic_attack_finisher.tres" id="4_requirement"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "basic_attack_finisher"
+SkillTags = Array[String](["shared", "melee", "basic_attack", "combo_finisher"])
+DisplayName = "基础攻击 III"
+StartupLabel = "PRESS"
+ActiveLabel = "BURST"
+RecoveryLabel = "LAND"
+StartupSeconds = 0.14
+ActiveSeconds = 0.12
+RecoverySeconds = 0.28
+BaseCooldownSeconds = 0.45
+BaseGlobalCooldownSeconds = 0.14
+ResourceCost = 0.0
+CanDashCancelDuringRecovery = true
+InterruptArmorDuringActive = 1
+CastRequirements = [ExtResource("4_requirement")]
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage")]

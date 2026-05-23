@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_attack_followup_cone_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/weapon_basic_damage_10.tres" id="3_damage"]
+[ext_resource type="Resource" path="res://resources/combat/requirements/basic_attack_followup.tres" id="4_requirement"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "basic_attack_followup"
+SkillTags = Array[String](["shared", "melee", "basic_attack", "combo_followup"])
+DisplayName = "基础攻击 II"
+StartupLabel = "TURN"
+ActiveLabel = "SWEEP"
+RecoveryLabel = "RESET"
+StartupSeconds = 0.12
+ActiveSeconds = 0.14
+RecoverySeconds = 0.24
+BaseCooldownSeconds = 0.4
+BaseGlobalCooldownSeconds = 0.12
+ResourceCost = 0.0
+CanDashCancelDuringRecovery = true
+CastRequirements = [ExtResource("4_requirement")]
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage")]

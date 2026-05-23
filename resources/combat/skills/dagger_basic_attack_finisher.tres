@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_attack_finisher_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/weapon_finisher_damage_33.tres" id="3_damage"]
+[ext_resource type="Resource" path="res://resources/combat/requirements/basic_attack_finisher.tres" id="4_requirement"]
+[ext_resource type="Resource" path="res://resources/combat/effects/bleed_12x5.tres" id="5_bleed"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "dagger_basic_attack_finisher"
+DisplayName = "Dagger Jab III"
+SkillTags = Array[String](["sharp", "dagger", "basic_attack", "combo_finisher", "bleed", "execution"])
+ActionType = 0
+SkillMultiplier = 1.15
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 8
+StartupLabel = "MARK"
+ActiveLabel = "BURY"
+RecoveryLabel = "GONE"
+StartupSeconds = 0.1
+ActiveSeconds = 0.12
+RecoverySeconds = 0.2
+BaseCooldownSeconds = 0.3
+BaseGlobalCooldownSeconds = 0.1
+CanDashCancelDuringRecovery = true
+CastRequirements = [ExtResource("4_requirement")]
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage"), ExtResource("5_bleed")]

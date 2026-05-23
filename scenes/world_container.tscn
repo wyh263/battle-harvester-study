@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" uid="uid://dc736v07i2uwr" path="res://scripts/inventory/WorldContainer.cs" id="1_world"]
+[ext_resource type="Script" uid="uid://utcfua1ykdm0" path="res://scripts/inventory/GridContainerComponent.cs" id="2_grid"]
+[ext_resource type="Script" uid="uid://bfy6l211ldrda" path="res://scripts/inventory/access/ContainerAccessController.cs" id="3_access"]
+[ext_resource type="Script" uid="uid://67v3wxnidgr1" path="res://scripts/inventory/loot/ContainerLootComponent.cs" id="4_loot"]
+[ext_resource type="Script" path="res://scripts/inventory/search/ContainerSearchRuntimeComponent.cs" id="5_search"]
+
+[sub_resource type="BoxMesh" id="1_box_mesh"]
+size = Vector3(1.2, 0.8, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="2_box_mat"]
+albedo_color = Color(0.560784, 0.403922, 0.227451, 1)
+roughness = 0.95
+
+[node name="WorldContainer" type="Node3D"]
+script = ExtResource("1_world")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="ChestMesh" type="MeshInstance3D" parent="Visuals"]
+position = Vector3(0, 0.4, 0)
+mesh = SubResource("1_box_mesh")
+surface_material_override/0 = SubResource("2_box_mat")
+
+[node name="StatusLabel" type="Label3D" parent="Visuals"]
+position = Vector3(0, 1.4, 0)
+billboard = 1
+text = "箱子"
+font_size = 36
+outline_size = 6
+
+[node name="Components" type="Node" parent="."]
+
+[node name="GridContainer" type="Node" parent="Components"]
+script = ExtResource("2_grid")
+
+[node name="AccessController" type="Node" parent="Components"]
+script = ExtResource("3_access")
+LockedByDefault = false
+EnforceDistanceCheck = true
+RequiredDistance = 2.6
+SingleUseAccess = false
+
+[node name="ContainerLoot" type="Node" parent="Components"]
+script = ExtResource("4_loot")
+ContainerPath = NodePath("../GridContainer")
+FillOnReady = false
+FillOnlyOnce = true
+
+[node name="ContainerSearchRuntime" type="Node" parent="Components"]
+script = ExtResource("5_search")
+ContainerPath = NodePath("../GridContainer")
+LootComponentPath = NodePath("../ContainerLoot")

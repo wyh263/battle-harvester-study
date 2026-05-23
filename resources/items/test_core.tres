@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "test_core"
+DisplayName = "测试核心"
+Category = 0
+GridWidth = 2
+GridHeight = 1
+CanRotate = true
+MaxStack = 5
+BaseValue = 3200
+LootRarity = 2
+Tags = Array[String](["test", "core"])

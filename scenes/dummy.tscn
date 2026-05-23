@@ -1,17 +1,33 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=17 format=3]
 
-[ext_resource type="Script" path="res://scripts/entities/Dummy.cs" id="1_dummy"]
-[ext_resource type="Script" path="res://scripts/attributes/StatsComponent.cs" id="2_stats"]
-[ext_resource type="Script" path="res://scripts/locomotion/Mover.cs" id="3_mover"]
-[ext_resource type="Script" path="res://scripts/locomotion/ForcedMovementComponent.cs" id="3_forced"]
-[ext_resource type="Script" path="res://Systems/Combat/Core/Hurtbox.cs" id="4_hurtbox"]
-[ext_resource type="Script" path="res://Systems/Combat/Core/Hitbox.cs" id="5_hitbox"]
-[ext_resource type="Script" path="res://scripts/reactions/HitReactionComponent.cs" id="6_hitreaction"]
-[ext_resource type="Script" path="res://Systems/Combat/Core/CombatResolver.cs" id="7_resolver"]
-[ext_resource type="Script" path="res://Systems/Combat/Core/AttackExecutor.cs" id="8_executor"]
-[ext_resource type="Script" path="res://scripts/locomotion/MovementHost.cs" id="9_movehost"]
-[ext_resource type="Script" path="res://scripts/effects/StatusEffectComponent.cs" id="10_status"]
-[ext_resource type="Script" path="res://scripts/effects/LaunchMotionComponent.cs" id="11_launch"]
+[ext_resource type="Script" uid="uid://c3qgs1wsrwxju" path="res://scripts/actors/Dummy.cs" id="1_dummy"]
+[ext_resource type="Script" uid="uid://cbqsv722nluci" path="res://scripts/attributes/StatsComponent.cs" id="2_stats"]
+[ext_resource type="Script" uid="uid://dr0ih6e7ntn0d" path="res://scripts/attributes/HealthComponent.cs" id="2_health"]
+[ext_resource type="Script" uid="uid://cknuwy7lmc52h" path="res://scripts/attributes/ArmorComponent.cs" id="2_armor"]
+[ext_resource type="Script" uid="uid://bfv26b6tt1t4g" path="res://scripts/attributes/DeathStateController.cs" id="2_death"]
+[ext_resource type="Script" uid="uid://yijya18q8rp8" path="res://scripts/locomotion/Mover.cs" id="3_mover"]
+[ext_resource type="Script" uid="uid://cc6qvwd14fbb" path="res://scripts/locomotion/ForcedMovementComponent.cs" id="3_forced"]
+[ext_resource type="Script" uid="uid://q0nk351of7q7" path="res://scripts/combat/core/Hurtbox.cs" id="4_hurtbox"]
+[ext_resource type="Script" uid="uid://b8422k7hk2uuj" path="res://scripts/combat/core/Hitbox.cs" id="5_hitbox"]
+[ext_resource type="Script" uid="uid://b8ngjy0s3bd1f" path="res://scripts/reactions/HitReactionComponent.cs" id="6_hitreaction"]
+[ext_resource type="Script" uid="uid://s5ssoq4urdfy" path="res://scripts/combat/core/CombatResolver.cs" id="7_resolver"]
+[ext_resource type="Script" uid="uid://tdhisdpsakhr" path="res://scripts/combat/core/AttackExecutor.cs" id="8_executor"]
+[ext_resource type="Script" uid="uid://bj7jn7q7b63cn" path="res://scripts/locomotion/MovementHost.cs" id="9_movehost"]
+[ext_resource type="Script" uid="uid://ckj88mieet1pl" path="res://scripts/effects/StatusEffectComponent.cs" id="10_status"]
+[ext_resource type="Script" uid="uid://c2i8rosct8p4y" path="res://scripts/effects/LaunchMotionComponent.cs" id="11_launch"]
+[ext_resource type="Script" uid="uid://cfr1dq0vi8drp" path="res://scripts/targeting/CombatAimController.cs" id="12_aim"]
+[ext_resource type="Script" uid="uid://dd7rbttuwj5xs" path="res://scripts/targeting/Targetable.cs" id="13_targetable"]
+[ext_resource type="Script" uid="uid://d4dpf830wailp" path="res://scripts/presentation/SkillPhaseLabelPresenter.cs" id="14_skilllabel"]
+[ext_resource type="Script" uid="uid://cpe114rxdvshf" path="res://scripts/combat/ActorSkillLoadout.cs" id="15_skillloadout"]
+[ext_resource type="Script" uid="uid://73o2sry253fs" path="res://scripts/combat/cooldowns/ActorSkillCooldownController.cs" id="16_skillcooldowns"]
+[ext_resource type="Script" uid="uid://dpuowj52gc4a6" path="res://scripts/combat/resources/ActorSkillResourceController.cs" id="17_skillresources"]
+[ext_resource type="Script" uid="uid://b0abupeml3mil" path="res://scripts/combat/casting/SkillChainTracker.cs" id="18_skillchain"]
+[ext_resource type="Script" uid="uid://dktwxi2jxfwc0" path="res://scripts/state/StateMachine.cs" id="19_statemachine"]
+[ext_resource type="Script" uid="uid://duiql4eekg8ck" path="res://scripts/actors/states/DummyIdleState.cs" id="20_dummyidle"]
+[ext_resource type="Script" uid="uid://b04eijjqq8nwh" path="res://scripts/combat/core/AttackState.cs" id="21_attackstate"]
+[ext_resource type="Script" uid="uid://cwt6c7jwlhpv2" path="res://scripts/actors/DummyCounterAttackController.cs" id="22_dummycounter"]
+[ext_resource type="Script" uid="uid://bb2yfdg4un0ym" path="res://scripts/equipment/EquipmentComponent.cs" id="23_equipment"]
+[ext_resource type="Script" uid="uid://d0c4sw2l0efoo" path="res://scripts/equipment/ActorEquipmentLoadoutComponent.cs" id="24_equipmentloadout"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 
@@ -59,6 +75,17 @@ outline_size = 8
 
 [node name="Stats" type="Node" parent="Components"]
 script = ExtResource("2_stats")
+BaseDefense = 6.0
+
+[node name="Health" type="Node" parent="Components"]
+script = ExtResource("2_health")
+
+[node name="Armor" type="Node" parent="Components"]
+script = ExtResource("2_armor")
+
+[node name="DeathState" type="Node" parent="Components"]
+script = ExtResource("2_death")
+DisableNodePaths = [NodePath("Components/CombatAimController"), NodePath("Components/DummyCounterAttackController"), NodePath("StateMachine")]
 
 [node name="Mover" type="Node" parent="Components"]
 script = ExtResource("3_mover")
@@ -76,6 +103,37 @@ script = ExtResource("7_resolver")
 [node name="AttackExecutor" type="Node" parent="Components"]
 script = ExtResource("8_executor")
 
+[node name="CombatAimController" type="Node" parent="Components"]
+script = ExtResource("12_aim")
+
+[node name="Targetable" type="Node" parent="Components"]
+script = ExtResource("13_targetable")
+
+[node name="SkillLoadout" type="Node" parent="Components"]
+script = ExtResource("15_skillloadout")
+
+[node name="SkillCooldowns" type="Node" parent="Components"]
+script = ExtResource("16_skillcooldowns")
+
+[node name="SkillResources" type="Node" parent="Components"]
+script = ExtResource("17_skillresources")
+RegenerationPerSecond = 3.0
+
+[node name="SkillChainTracker" type="Node" parent="Components"]
+script = ExtResource("18_skillchain")
+
+[node name="DummyCounterAttackController" type="Node" parent="Components"]
+script = ExtResource("22_dummycounter")
+
+[node name="Equipment" type="Node" parent="Components"]
+script = ExtResource("23_equipment")
+
+[node name="EquipmentLoadout" type="Node" parent="Components"]
+script = ExtResource("24_equipmentloadout")
+
+[node name="SkillPhaseLabelPresenter" type="Node" parent="Components"]
+script = ExtResource("14_skilllabel")
+
 [node name="MovementHost" type="Node" parent="Components"]
 script = ExtResource("9_movehost")
 
@@ -84,6 +142,15 @@ script = ExtResource("10_status")
 
 [node name="LaunchMotion" type="Node" parent="Components"]
 script = ExtResource("11_launch")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("19_statemachine")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("20_dummyidle")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("21_attackstate")
 
 [node name="Hurtbox" type="Area3D" parent="."]
 script = ExtResource("4_hurtbox")
@@ -106,3 +173,4 @@ shape = SubResource("3")
 visible = false
 mesh = SubResource("4")
 surface_material_override/0 = SubResource("5")
+

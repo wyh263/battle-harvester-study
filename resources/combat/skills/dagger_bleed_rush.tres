@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_melee_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/weapon_basic_damage_10.tres" id="3_damage"]
+[ext_resource type="Resource" path="res://resources/combat/effects/bleed_12x5.tres" id="4_bleed"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "dagger_bleed_rush"
+DisplayName = "Dagger Bleed Rush"
+SkillTags = Array[String](["weapon_skill", "sharp", "dagger_skill", "bleed"])
+LoadoutCategory = 0
+ActionType = 2
+SkillMultiplier = 1.18
+PowerTier = 2.8
+DestructionMultiplier = 1.05
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 8
+RequiredWeaponTraitMask = 4
+StartupLabel = "RUSH"
+ActiveLabel = "CUT"
+RecoveryLabel = "SLIP"
+StartupSeconds = 0.06
+ActiveSeconds = 0.12
+RecoverySeconds = 0.22
+BaseCooldownSeconds = 0.9
+BaseGlobalCooldownSeconds = 0.12
+CanDashCancelDuringRecovery = true
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage"), ExtResource("4_bleed")]

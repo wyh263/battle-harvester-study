@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[resource]
+script = ExtResource("1_item")
+ItemId = "test_white_consumable_01"
+DisplayName = "T White Consumable 01"
+Category = 4
+GridWidth = 1
+GridHeight = 1
+CanRotate = false
+MaxStack = 1
+BaseValue = 3000
+LootRarity = 1
+Tags = Array[String](["test", "white", "consumable"])

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_attack_followup_cone_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/weapon_basic_damage_10.tres" id="3_damage"]
+[ext_resource type="Resource" path="res://resources/combat/requirements/basic_attack_followup.tres" id="4_requirement"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "katana_basic_attack_followup"
+DisplayName = "Katana Cut II"
+SkillTags = Array[String](["sharp", "katana", "basic_attack", "combo_followup"])
+ActionType = 0
+SkillMultiplier = 1.12
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 2
+StartupLabel = "FLOW"
+ActiveLabel = "SWEEP"
+RecoveryLabel = "OPEN"
+StartupSeconds = 0.1
+ActiveSeconds = 0.14
+RecoverySeconds = 0.72
+BaseCooldownSeconds = 0.38
+BaseGlobalCooldownSeconds = 0.12
+CanDashCancelDuringRecovery = true
+CastRequirements = [ExtResource("4_requirement")]
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage")]

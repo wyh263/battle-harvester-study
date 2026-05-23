@@ -1,6 +1,6 @@
 using Godot;
 
-namespace BattleHarvesterStudy;
+namespace BattleHarvesterStudy.Locomotion;
 
 public readonly struct ForcedMovementRequest
 {

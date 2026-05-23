@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_melee_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/damage_33_no_knockback.tres" id="3_damage"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "katana_draw_counter"
+DisplayName = "Katana Draw Counter"
+SkillTags = Array[String](["weapon_skill", "sharp", "katana_skill", "counter"])
+LoadoutCategory = 0
+ActionType = 2
+SkillMultiplier = 1.45
+PowerTier = 3.6
+DestructionMultiplier = 1.0
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 2
+RequiredWeaponTraitMask = 1
+StartupLabel = "DRAW"
+ActiveLabel = "CUT"
+RecoveryLabel = "RESET"
+StartupSeconds = 0.08
+ActiveSeconds = 0.14
+RecoverySeconds = 0.34
+BaseCooldownSeconds = 1.2
+BaseGlobalCooldownSeconds = 0.18
+CanDashCancelDuringRecovery = true
+CanBeInterruptedDuringStartup = false
+InterruptArmorDuringStartup = 2
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage")]

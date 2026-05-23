@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/equipment/WeaponEquipmentDefinition.cs" id="2_equipment"]
+[ext_resource type="Resource" path="res://resources/combat/movesets/katana_moveset.tres" id="3_moveset"]
+
+[sub_resource type="Resource" id="Equipment"]
+script = ExtResource("2_equipment")
+DisplayVariant = "T4"
+Tier = 4
+AllowedSlots = Array[int]([1, 2])
+WeaponArchetypeId = 1
+WeaponFamilyId = 2
+WeaponTraitMask = 1
+MoveSet = ExtResource("3_moveset")
+WeaponSkillSlotCount = 2
+AllowedWeaponSkillTags = Array[String](["katana_skill", "counter"])
+AttackSpeedMultiplier = 1.1
+BaseMultiplier = 2.15
+PenetrationTier = 4.0
+PenetrationTierBias = 0.8
+DestructionMultiplierBias = 1.0
+MaxDurability = 100.0
+CritRate = 0.06
+CritDamage = 1.55
+RecoveryPunishMultiplier = 2.0
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "katana_t4"
+DisplayName = "T4 Katana"
+Category = 1
+GridWidth = 2
+CanRotate = true
+BaseValue = 220000
+Tags = Array[String](["equipment", "weapon", "sharp", "katana", "tier4"])
+Equipment = SubResource("Equipment")

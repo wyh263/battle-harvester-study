@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="ShapeAttackBehaviorDefinition" load_steps=3 format=3]
-
-[ext_resource type="Script" path="res://Systems/Combat/Behaviors/ShapeAttackBehaviorDefinition.cs" id="1_behavior"]
-[ext_resource type="Resource" path="res://resources/combat/shapes/slow_orb_sphere.tres" id="2_shape"]
-
-[resource]
-script = ExtResource("1_behavior")
-Shape = ExtResource("2_shape")

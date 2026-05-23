@@ -1,14 +1,20 @@
 using Godot;
 
-namespace BattleHarvesterStudy;
+namespace BattleHarvesterStudy.Camera;
 
 public partial class CameraFollowPivot : Node3D
 {
 	[Export]
-	public Vector3 FollowOffset { get; set; } = new(0.0f, 3.5f, 3.5f);
+	public float CameraDistance { get; set; } = 25.0f;
 
 	[Export]
-	public Vector3 FixedRotationDegrees { get; set; } = new(-45.0f, 45.0f, 0.0f);
+	public Vector3 FocusOffset { get; set; } = new(0.0f, 0.9f, 0.0f);
+
+	[Export]
+	public float FocusLeadDistance { get; set; } = 0.5f;
+
+	[Export]
+	public Vector3 FixedRotationDegrees { get; set; } = new(-38.0f, 0.0f, 0.0f);
 
 	private Node3D? _target;
 
@@ -32,7 +38,14 @@ public partial class CameraFollowPivot : Node3D
 			return;
 		}
 
-		GlobalPosition = _target.GlobalPosition + FollowOffset;
 		RotationDegrees = FixedRotationDegrees;
+		Basis basis = Transform.Basis;
+		Vector3 groundForward = -basis.Z;
+		groundForward.Y = 0.0f;
+		groundForward = groundForward.LengthSquared() > 0.0f
+			? groundForward.Normalized()
+			: Vector3.Forward;
+		Vector3 focusPoint = _target.GlobalPosition + FocusOffset + (groundForward * FocusLeadDistance);
+		GlobalPosition = focusPoint + (basis.Z * CameraDistance);
 	}
 }

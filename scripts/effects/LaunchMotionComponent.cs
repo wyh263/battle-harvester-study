@@ -1,8 +1,9 @@
 using Godot;
 
-namespace BattleHarvesterStudy;
+namespace BattleHarvesterStudy.Effects;
 
 public partial class LaunchMotionComponent : Node
+	, IStatusQuerySource
 {
 	private Node3D? _owner;
 	private bool _isActive;
@@ -64,5 +65,26 @@ public partial class LaunchMotionComponent : Node
 		_duration = Mathf.Max(0.05f, duration);
 		_elapsed = 0.0f;
 		_isActive = true;
+	}
+
+	public bool HasStatus(string statusId)
+	{
+		return GetStatusRemaining(statusId) > 0.0f;
+	}
+
+	public float GetStatusRemaining(string statusId)
+	{
+		if (!_isActive)
+		{
+			return 0.0f;
+		}
+
+		string normalized = statusId.Trim().ToLowerInvariant();
+		if (normalized != "launch" && normalized != "launched" && normalized != "airborne")
+		{
+			return 0.0f;
+		}
+
+		return Mathf.Max(0.0f, _duration - _elapsed);
 	}
 }

@@ -1,0 +1,108 @@
+[gd_resource type="Resource" script_class="LootTableDefinition" load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootTableDefinition.cs" id="1_table"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootEntryDefinition.cs" id="2_entry"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootBucketDefinition.cs" id="3_bucket"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootRarityWeightDefinition.cs" id="4_rarity_weight"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootCategoryWeightDefinition.cs" id="5_category_weight"]
+[ext_resource type="Resource" path="res://resources/items/repair_kit_t1.tres" id="6_repair_t1"]
+[ext_resource type="Resource" path="res://resources/items/repair_kit_t2.tres" id="7_repair_t2"]
+[ext_resource type="Resource" path="res://resources/items/repair_kit_t3.tres" id="8_repair_t3"]
+[ext_resource type="Resource" path="res://resources/items/test_scrap.tres" id="9_scrap"]
+
+[sub_resource type="Resource" id="LootEntryDefinition_repair_t1"]
+script = ExtResource("2_entry")
+EntryId = "medical_repair_t1"
+Item = ExtResource("6_repair_t1")
+Weight = 10
+
+[sub_resource type="Resource" id="LootEntryDefinition_repair_t2"]
+script = ExtResource("2_entry")
+EntryId = "medical_repair_t2"
+Item = ExtResource("7_repair_t2")
+Weight = 7
+
+[sub_resource type="Resource" id="LootEntryDefinition_repair_t3"]
+script = ExtResource("2_entry")
+EntryId = "medical_repair_t3"
+Item = ExtResource("8_repair_t3")
+Weight = 3
+AllowDuplicateRolls = false
+
+[sub_resource type="Resource" id="LootEntryDefinition_scrap"]
+script = ExtResource("2_entry")
+EntryId = "medical_scrap"
+Item = ExtResource("9_scrap")
+Weight = 6
+MinStackCount = 1
+MaxStackCount = 3
+
+[sub_resource type="Resource" id="LootRarityWeight_white"]
+script = ExtResource("4_rarity_weight")
+Rarity = 1
+Weight = 68.0
+
+[sub_resource type="Resource" id="LootRarityWeight_green"]
+script = ExtResource("4_rarity_weight")
+Rarity = 2
+Weight = 24.0
+
+[sub_resource type="Resource" id="LootRarityWeight_blue"]
+script = ExtResource("4_rarity_weight")
+Rarity = 3
+Weight = 8.0
+
+[sub_resource type="Resource" id="LootCategoryWeight_medical"]
+script = ExtResource("5_category_weight")
+Category = 3
+Weight = 88.0
+
+[sub_resource type="Resource" id="LootCategoryWeight_generic"]
+script = ExtResource("5_category_weight")
+Category = 0
+Weight = 12.0
+
+[sub_resource type="Resource" id="LootBucket_white_medical"]
+script = ExtResource("3_bucket")
+BucketId = "white_medical"
+Rarity = 1
+Category = 3
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_repair_t1")])
+
+[sub_resource type="Resource" id="LootBucket_green_medical"]
+script = ExtResource("3_bucket")
+BucketId = "green_medical"
+Rarity = 2
+Category = 3
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_repair_t2")])
+
+[sub_resource type="Resource" id="LootBucket_blue_medical"]
+script = ExtResource("3_bucket")
+BucketId = "blue_medical"
+Rarity = 3
+Category = 3
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_repair_t3")])
+
+[sub_resource type="Resource" id="LootBucket_white_generic"]
+script = ExtResource("3_bucket")
+BucketId = "white_generic"
+Rarity = 1
+Category = 0
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_scrap")])
+
+[sub_resource type="Resource" id="LootBucket_green_generic"]
+script = ExtResource("3_bucket")
+BucketId = "green_generic"
+Rarity = 2
+Category = 0
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_scrap")])
+
+[resource]
+script = ExtResource("1_table")
+LootTableId = "medical_loot_table"
+DisplayName = "Medical Loot Table"
+MinRollCount = 2
+MaxRollCount = 4
+RarityWeights = Array[ExtResource("4_rarity_weight")]([SubResource("LootRarityWeight_white"), SubResource("LootRarityWeight_green"), SubResource("LootRarityWeight_blue")])
+CategoryWeights = Array[ExtResource("5_category_weight")]([SubResource("LootCategoryWeight_medical"), SubResource("LootCategoryWeight_generic")])
+Buckets = Array[ExtResource("3_bucket")]([SubResource("LootBucket_white_medical"), SubResource("LootBucket_green_medical"), SubResource("LootBucket_blue_medical"), SubResource("LootBucket_white_generic"), SubResource("LootBucket_green_generic")])

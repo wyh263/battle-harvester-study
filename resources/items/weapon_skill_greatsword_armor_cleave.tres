@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/items/WeaponSkillItemDefinition.cs" id="2_weapon_skill"]
+[ext_resource type="Resource" path="res://resources/combat/skills/greatsword_armor_cleave.tres" id="3_skill"]
+
+[sub_resource type="Resource" id="WeaponSkill"]
+script = ExtResource("2_weapon_skill")
+Skill = ExtResource("3_skill")
+GrantedUses = 6
+ConsumeOnInstall = true
+ConsumeUsesOnCast = true
+CanBeLearned = true
+UnlockConditionType = 4
+RequiredUseCount = 6
+RequiredKillCount = 10
+RequiredBossKillCount = 1
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 4
+RequiredWeaponTraitMask = 64
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "weapon_skill_greatsword_armor_cleave"
+DisplayName = "Greatsword Armor Cleave Manual"
+Category = 11
+GridWidth = 1
+GridHeight = 2
+CanRotate = true
+BaseValue = 22000
+Tags = Array[String](["weapon_skill", "greatsword", "manual"])
+WeaponSkill = SubResource("WeaponSkill")

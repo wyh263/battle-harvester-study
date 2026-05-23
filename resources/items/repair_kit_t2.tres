@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/items/UsableItemDefinition.cs" id="2_usable"]
+
+[sub_resource type="Resource" id="Usable"]
+script = ExtResource("2_usable")
+RepairsArmor = true
+RepairTier = 2
+ConsumeOnUse = true
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "repair_kit_t2"
+DisplayName = "T2 Armor Repair Kit"
+Category = 3
+MaxStack = 3
+BaseValue = 4000
+Tags = Array[String](["repair", "armor", "tier2"])
+Usable = SubResource("Usable")

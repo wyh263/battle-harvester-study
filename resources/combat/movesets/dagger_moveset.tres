@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponMoveSetDefinition" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/equipment/WeaponMoveSetDefinition.cs" id="1_moveset"]
+[ext_resource type="Resource" path="res://resources/combat/skills/dagger_basic_attack.tres" id="2_skill"]
+[ext_resource type="Resource" path="res://resources/combat/skills/dagger_basic_attack_followup.tres" id="3_skill"]
+[ext_resource type="Resource" path="res://resources/combat/skills/dagger_basic_attack_finisher.tres" id="4_skill"]
+
+[resource]
+script = ExtResource("1_moveset")
+MoveSetId = "moveset_dagger"
+DisplayName = "Dagger Move Set"
+PrimaryAttack = ExtResource("2_skill")
+FollowupAttack = ExtResource("3_skill")
+FinisherAttack = ExtResource("4_skill")

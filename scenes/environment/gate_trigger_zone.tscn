@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="BoxShape3D" id="1_box_shape"]
+size = Vector3(1, 1, 1)
+
+[node name="GateTriggerZone" type="Area3D"]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("1_box_shape")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GridContainerDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/GridContainerDefinition.cs" id="1_container"]
+
+[resource]
+script = ExtResource("1_container")
+ContainerId = "player_inventory_main"
+DisplayName = "角色背包"
+GridColumns = 7
+GridRows = 5
+AutoSortEnabled = true

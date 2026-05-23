@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_attack_followup_cone_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/weapon_basic_damage_10.tres" id="3_damage"]
+[ext_resource type="Resource" path="res://resources/combat/requirements/basic_attack_followup.tres" id="4_requirement"]
+[ext_resource type="Resource" path="res://resources/combat/effects/bleed_12x5.tres" id="5_bleed"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "dagger_basic_attack_followup"
+DisplayName = "Dagger Jab II"
+SkillTags = Array[String](["sharp", "dagger", "basic_attack", "combo_followup", "bleed"])
+ActionType = 0
+SkillMultiplier = 0.95
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 8
+StartupLabel = "SLIP"
+ActiveLabel = "CUT"
+RecoveryLabel = "KEEP"
+StartupSeconds = 0.08
+ActiveSeconds = 0.11
+RecoverySeconds = 0.16
+BaseCooldownSeconds = 0.26
+BaseGlobalCooldownSeconds = 0.08
+CanDashCancelDuringRecovery = true
+CastRequirements = [ExtResource("4_requirement")]
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage"), ExtResource("5_bleed")]

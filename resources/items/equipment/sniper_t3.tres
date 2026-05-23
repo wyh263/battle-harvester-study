@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/equipment/FirearmWeaponDefinition.cs" id="2_firearm"]
+
+[sub_resource type="Resource" id="Equipment"]
+script = ExtResource("2_firearm")
+DisplayVariant = "T3"
+Kind = 1
+Tier = 3
+AllowedSlots = Array[int]([1, 2])
+GripType = 2
+WeaponArchetypeId = 4
+WeaponFamilyId = 65536
+WeaponSkillSlotCount = 2
+AllowedWeaponSkillTags = Array[String](["firearm_skill"])
+DamageSchool = 0
+DeliveryModel = 0
+BaseMultiplier = 1.0
+PenetrationTier = 3.6
+CritRate = 0.12
+CritDamage = 1.9
+FireMode = 0
+AmmoType = 3
+BaseDamagePerPellet = 400
+PelletCount = 1
+FireRate = 0.65
+MagazineCapacity = 5
+EffectiveRange = 40.0
+SevereFalloffRange = 62.0
+BaseHitChance = 76.0
+Precision = 88.0
+RecoilControl = 42.0
+Handling = 40.0
+HipFireAccuracy = 8.0
+CanAimWhileMoving = false
+ReloadDuration = 2.2
+AimBaseBonus = 18.0
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "sniper_t3"
+DisplayName = "T3 Sniper"
+Category = 1
+GridWidth = 2
+GridHeight = 1
+CanRotate = true
+BaseValue = 92000
+LootRarity = 4
+Tags = Array[String](["equipment", "weapon", "firearm", "sniper", "tier3"])
+Equipment = SubResource("Equipment")

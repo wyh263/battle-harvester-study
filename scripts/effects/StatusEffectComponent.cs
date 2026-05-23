@@ -1,14 +1,16 @@
 using Godot;
 using System.Collections.Generic;
 
-namespace BattleHarvesterStudy;
+namespace BattleHarvesterStudy.Effects;
 
 public partial class StatusEffectComponent : Node
+	, IStatusQuerySource
 {
 	private sealed class BleedInstance
 	{
 		public required Node3D Source;
 		public required string SkillId;
+		public StatusPresentationDefinition? Presentation;
 		public required int DamagePerTick;
 		public required float TickIntervalSeconds;
 		public required float TotalDurationSeconds;
@@ -19,10 +21,14 @@ public partial class StatusEffectComponent : Node
 	private sealed class SlowInstance
 	{
 		public required string SourceKey;
+		public required Node3D Source;
+		public required string SkillId;
+		public StatusPresentationDefinition? Presentation;
 		public required float Multiplier;
 		public float RemainingDuration;
 	}
 
+	private Node3D? _owner;
 	private Hurtbox? _hurtbox;
 	private StatsComponent? _stats;
 	private readonly List<BleedInstance> _bleeds = new();
@@ -30,9 +36,9 @@ public partial class StatusEffectComponent : Node
 
 	public override void _Ready()
 	{
-		Node3D? owner = GetOwner<Node3D>();
-		_hurtbox = owner?.GetNodeOrNull<Hurtbox>("Hurtbox");
-		_stats = owner?.GetNodeOrNull<StatsComponent>("Components/Stats");
+		_owner = GetOwner<Node3D>();
+		_hurtbox = _owner?.GetNodeOrNull<Hurtbox>("Hurtbox");
+		_stats = _owner?.GetNodeOrNull<StatsComponent>("Components/Stats");
 		SetPhysicsProcess(true);
 	}
 
@@ -62,6 +68,7 @@ public partial class StatusEffectComponent : Node
 
 				if (bleed.RemainingDuration <= 0.0f)
 				{
+					PublishStatusPhase(bleed.Source, bleed.SkillId, "bleed", StatusPresentationPhase.Expired, bleed.Presentation);
 					_bleeds.RemoveAt(index);
 				}
 			}
@@ -79,26 +86,40 @@ public partial class StatusEffectComponent : Node
 			if (slow.RemainingDuration <= 0.0f)
 			{
 				_stats.RemoveMoveSpeedModifier(slow.SourceKey);
+				PublishStatusPhase(slow.Source, slow.SkillId, "slow", StatusPresentationPhase.Expired, slow.Presentation);
 				_slows.RemoveAt(index);
 			}
 		}
 	}
 
-	public void ApplyBleed(Node3D source, string skillId, int damagePerTick, float tickIntervalSeconds, float totalDurationSeconds)
+	public void ApplyBleed(
+		Node3D source,
+		string skillId,
+		int damagePerTick,
+		float tickIntervalSeconds,
+		float totalDurationSeconds,
+		StatusPresentationDefinition? presentation = null)
 	{
 		_bleeds.Add(new BleedInstance
 		{
 			Source = source,
 			SkillId = skillId,
+			Presentation = presentation,
 			DamagePerTick = damagePerTick,
 			TickIntervalSeconds = Mathf.Max(0.05f, tickIntervalSeconds),
 			TotalDurationSeconds = Mathf.Max(0.05f, totalDurationSeconds),
 			RemainingDuration = Mathf.Max(0.05f, totalDurationSeconds),
 			TimeUntilNextTick = Mathf.Max(0.05f, tickIntervalSeconds)
 		});
+		PublishStatusPhase(source, skillId, "bleed", StatusPresentationPhase.Applied, presentation);
 	}
 
-	public void ApplySlow(string sourceSkillId, float slowPercent, float totalDurationSeconds)
+	public void ApplySlow(
+		Node3D source,
+		string sourceSkillId,
+		float slowPercent,
+		float totalDurationSeconds,
+		StatusPresentationDefinition? presentation = null)
 	{
 		if (_stats == null)
 		{
@@ -106,7 +127,7 @@ public partial class StatusEffectComponent : Node
 		}
 
 		float clampedSlowPercent = Mathf.Clamp(slowPercent, 0.0f, 0.95f);
-		string sourceKey = $"slow_{sourceSkillId}";
+		string sourceKey = $"slow_{source.GetInstanceId()}_{sourceSkillId}";
 		_stats.SetMoveSpeedModifier(sourceKey, multiplier: 1.0f - clampedSlowPercent);
 
 		for (int index = 0; index < _slows.Count; index++)
@@ -116,16 +137,75 @@ public partial class StatusEffectComponent : Node
 				continue;
 			}
 
+			_slows[index].Presentation = presentation;
 			_slows[index].Multiplier = 1.0f - clampedSlowPercent;
 			_slows[index].RemainingDuration = Mathf.Max(_slows[index].RemainingDuration, totalDurationSeconds);
+			PublishStatusPhase(source, sourceSkillId, "slow", StatusPresentationPhase.Applied, presentation);
 			return;
 		}
 
 		_slows.Add(new SlowInstance
 		{
 			SourceKey = sourceKey,
+			Source = source,
+			SkillId = sourceSkillId,
+			Presentation = presentation,
 			Multiplier = 1.0f - clampedSlowPercent,
 			RemainingDuration = Mathf.Max(0.05f, totalDurationSeconds)
 		});
+		PublishStatusPhase(source, sourceSkillId, "slow", StatusPresentationPhase.Applied, presentation);
+	}
+
+	private void PublishStatusPhase(
+		Node3D source,
+		string skillId,
+		string statusId,
+		StatusPresentationPhase phase,
+		StatusPresentationDefinition? presentation)
+	{
+		if (_owner == null)
+		{
+			return;
+		}
+
+		CombatPresentationEvents.PublishStatusPhase(source, _owner, skillId, statusId, phase, presentation);
+	}
+
+	public bool HasStatus(string statusId)
+	{
+		return GetStatusRemaining(statusId) > 0.0f;
+	}
+
+	public float GetStatusRemaining(string statusId)
+	{
+		string normalized = statusId.Trim().ToLowerInvariant();
+		return normalized switch
+		{
+			"bleed" => GetLongestBleedRemaining(),
+			"slow" => GetLongestSlowRemaining(),
+			_ => 0.0f
+		};
+	}
+
+	private float GetLongestBleedRemaining()
+	{
+		float remaining = 0.0f;
+		foreach (BleedInstance bleed in _bleeds)
+		{
+			remaining = Mathf.Max(remaining, bleed.RemainingDuration);
+		}
+
+		return remaining;
+	}
+
+	private float GetLongestSlowRemaining()
+	{
+		float remaining = 0.0f;
+		foreach (SlowInstance slow in _slows)
+		{
+			remaining = Mathf.Max(remaining, slow.RemainingDuration);
+		}
+
+		return remaining;
 	}
 }

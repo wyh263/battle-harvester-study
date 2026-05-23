@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_attack_followup_cone_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/weapon_basic_damage_10.tres" id="3_damage"]
+[ext_resource type="Resource" path="res://resources/combat/requirements/basic_attack_followup.tres" id="4_requirement"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "greatsword_basic_attack_followup"
+DisplayName = "Greatsword Smash II"
+SkillTags = Array[String](["sharp", "greatsword", "basic_attack", "combo_followup", "heavy"])
+ActionType = 1
+SkillMultiplier = 1.35
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 4
+StartupLabel = "DRAG"
+ActiveLabel = "HEAVE"
+RecoveryLabel = "SETTLE"
+StartupSeconds = 0.55
+ActiveSeconds = 0.2
+RecoverySeconds = 0.78
+BaseCooldownSeconds = 0.52
+BaseGlobalCooldownSeconds = 0.16
+CanDashCancelDuringRecovery = false
+InterruptArmorDuringActive = 1
+CastRequirements = [ExtResource("4_requirement")]
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage")]

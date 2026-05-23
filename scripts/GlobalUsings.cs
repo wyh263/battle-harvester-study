@@ -1,0 +1,14 @@
+global using BattleHarvesterStudy;
+global using BattleHarvesterStudy.Actors;
+global using BattleHarvesterStudy.Attributes;
+global using BattleHarvesterStudy.Camera;
+global using BattleHarvesterStudy.Combat;
+global using BattleHarvesterStudy.Effects;
+global using BattleHarvesterStudy.Equipment;
+global using BattleHarvesterStudy.Locomotion;
+global using BattleHarvesterStudy.Inventory;
+global using BattleHarvesterStudy.Items;
+global using BattleHarvesterStudy.Presentation;
+global using BattleHarvesterStudy.Reactions;
+global using BattleHarvesterStudy.State;
+global using BattleHarvesterStudy.Targeting;

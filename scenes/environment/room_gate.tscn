@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3]
+
+[sub_resource type="BoxMesh" id="1_gate_mesh"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="2_gate_material"]
+albedo_color = Color(0.309804, 0.372549, 0.258824, 1)
+roughness = 1.0
+
+[sub_resource type="BoxShape3D" id="3_gate_shape"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="4_frame_material"]
+albedo_color = Color(0.211765, 0.168627, 0.129412, 1)
+roughness = 1.0
+
+[node name="RoomGate" type="StaticBody3D" groups=["environment_obstacle", "room_gate"]]
+
+[node name="DoorVisual" type="MeshInstance3D" parent="."]
+mesh = SubResource("1_gate_mesh")
+surface_material_override/0 = SubResource("2_gate_material")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("3_gate_shape")
+
+[node name="TopLintel" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.9, 0)
+scale = Vector3(1.15, 0.18, 1.05)
+mesh = SubResource("1_gate_mesh")
+surface_material_override/0 = SubResource("4_frame_material")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PreviousSkillRequirement" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/casting/requirements/PreviousSkillRequirement.cs" id="1_requirement"]
+
+[resource]
+script = ExtResource("1_requirement")
+RequiredSkillIds = PackedStringArray("basic_attack_followup")
+MaxElapsedSeconds = 0.6

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WorldContainerArchetypeDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/WorldContainerArchetypeDefinition.cs" id="1_archetype"]
+[ext_resource type="Resource" path="res://resources/inventory/loot/travel_bag_loot_table.tres" id="2_loot"]
+
+[resource]
+script = ExtResource("1_archetype")
+ArchetypeId = "container_travel_bag"
+DisplayName = "旅行包"
+VisualType = 5
+Tags = Array[int]([4])
+GridColumns = 5
+GridRows = 5
+RequiresSearch = true
+LootTable = ExtResource("2_loot")
+VisualSize = Vector3(1.0, 0.7, 0.8)
+VisualColor = Color(0.529412, 0.356863, 0.239216, 1)

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/items/AmmoItemDefinition.cs" id="2_ammo"]
+
+[sub_resource type="Resource" id="Ammo"]
+script = ExtResource("2_ammo")
+AmmoType = 1
+AmmoTier = 3
+PenetrationTier = 3.0
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "shotgun_ammo_t3"
+DisplayName = "T3 Shotgun Ammo"
+Category = 5
+MaxStack = 40
+BaseValue = 420
+LootRarity = 3
+Tags = Array[String](["ammo", "shotgun", "tier3"])
+Ammo = SubResource("Ammo")

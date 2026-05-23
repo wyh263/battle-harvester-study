@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/items/UsableItemDefinition.cs" id="2_usable"]
+[ext_resource type="Script" path="res://scripts/inventory/search/ContainerModifierProfileDefinition.cs" id="3_profile"]
+
+[sub_resource type="Resource" id="ModifierProfile"]
+script = ExtResource("3_profile")
+ModifierId = "search_speed_booster_ii"
+DisplayName = "搜索增幅器 II"
+GlobalSearchSpeedMultiplier = 1.5
+
+[sub_resource type="Resource" id="Usable"]
+script = ExtResource("2_usable")
+ContainerModifierProfile = SubResource("ModifierProfile")
+ConsumeOnUse = true
+AllowUseAtFull = true
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "search_speed_booster_ii"
+DisplayName = "搜索增幅器 II"
+Category = 4
+GridWidth = 1
+GridHeight = 2
+CanRotate = true
+MaxStack = 3
+BaseValue = 12500
+Tags = Array[String](["search", "speed", "modifier"])
+Usable = SubResource("Usable")

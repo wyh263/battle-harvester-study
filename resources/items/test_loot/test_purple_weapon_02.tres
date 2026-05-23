@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[resource]
+script = ExtResource("1_item")
+ItemId = "test_purple_weapon_02"
+DisplayName = "T Purple Weapon 02"
+Category = 1
+GridWidth = 1
+GridHeight = 1
+CanRotate = false
+MaxStack = 1
+BaseValue = 30000
+LootRarity = 4
+Tags = Array[String](["test", "purple", "weapon"])

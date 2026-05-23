@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="LootTableDefinition" load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootTableDefinition.cs" id="1_table"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootEntryDefinition.cs" id="2_entry"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootBucketDefinition.cs" id="3_bucket"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootRarityWeightDefinition.cs" id="4_rarity_weight"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootCategoryWeightDefinition.cs" id="5_category_weight"]
+[ext_resource type="Resource" path="res://resources/items/test_scrap.tres" id="6_scrap"]
+[ext_resource type="Resource" path="res://resources/items/repair_kit_t1.tres" id="7_repair"]
+[ext_resource type="Resource" path="res://resources/items/equipment/armor_t1.tres" id="8_armor"]
+
+[sub_resource type="Resource" id="LootEntryDefinition_scrap"]
+script = ExtResource("2_entry")
+EntryId = "travel_scrap"
+Item = ExtResource("6_scrap")
+Weight = 7
+MinStackCount = 1
+MaxStackCount = 4
+
+[sub_resource type="Resource" id="LootEntryDefinition_repair"]
+script = ExtResource("2_entry")
+EntryId = "travel_repair_t1"
+Item = ExtResource("7_repair")
+Weight = 4
+
+[sub_resource type="Resource" id="LootEntryDefinition_armor"]
+script = ExtResource("2_entry")
+EntryId = "travel_armor_t1"
+Item = ExtResource("8_armor")
+Weight = 1
+AllowDuplicateRolls = false
+
+[sub_resource type="Resource" id="LootRarityWeight_white"]
+script = ExtResource("4_rarity_weight")
+Rarity = 1
+Weight = 76.0
+
+[sub_resource type="Resource" id="LootRarityWeight_green"]
+script = ExtResource("4_rarity_weight")
+Rarity = 2
+Weight = 18.0
+
+[sub_resource type="Resource" id="LootRarityWeight_blue"]
+script = ExtResource("4_rarity_weight")
+Rarity = 3
+Weight = 5.0
+
+[sub_resource type="Resource" id="LootRarityWeight_purple"]
+script = ExtResource("4_rarity_weight")
+Rarity = 4
+Weight = 1.0
+
+[sub_resource type="Resource" id="LootCategoryWeight_generic"]
+script = ExtResource("5_category_weight")
+Category = 0
+Weight = 68.0
+
+[sub_resource type="Resource" id="LootCategoryWeight_medical"]
+script = ExtResource("5_category_weight")
+Category = 3
+Weight = 22.0
+
+[sub_resource type="Resource" id="LootCategoryWeight_armor"]
+script = ExtResource("5_category_weight")
+Category = 2
+Weight = 10.0
+
+[sub_resource type="Resource" id="LootBucket_white_generic"]
+script = ExtResource("3_bucket")
+BucketId = "white_generic"
+Rarity = 1
+Category = 0
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_scrap")])
+
+[sub_resource type="Resource" id="LootBucket_white_medical"]
+script = ExtResource("3_bucket")
+BucketId = "white_medical"
+Rarity = 1
+Category = 3
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_repair")])
+
+[sub_resource type="Resource" id="LootBucket_green_armor"]
+script = ExtResource("3_bucket")
+BucketId = "green_armor"
+Rarity = 2
+Category = 2
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_armor")])
+
+[resource]
+script = ExtResource("1_table")
+LootTableId = "travel_bag_loot_table"
+DisplayName = "Travel Bag Loot Table"
+MinRollCount = 1
+MaxRollCount = 4
+RarityWeights = Array[ExtResource("4_rarity_weight")]([SubResource("LootRarityWeight_white"), SubResource("LootRarityWeight_green"), SubResource("LootRarityWeight_blue"), SubResource("LootRarityWeight_purple")])
+CategoryWeights = Array[ExtResource("5_category_weight")]([SubResource("LootCategoryWeight_generic"), SubResource("LootCategoryWeight_medical"), SubResource("LootCategoryWeight_armor")])
+Buckets = Array[ExtResource("3_bucket")]([SubResource("LootBucket_white_generic"), SubResource("LootBucket_white_medical"), SubResource("LootBucket_green_armor")])

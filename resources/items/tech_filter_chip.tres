@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/items/UsableItemDefinition.cs" id="2_usable"]
+[ext_resource type="Script" path="res://scripts/inventory/search/ContainerModifierProfileDefinition.cs" id="3_profile"]
+
+[sub_resource type="Resource" id="ModifierProfile"]
+script = ExtResource("3_profile")
+ModifierId = "loot_rate_booster_i"
+DisplayName = "爆率增幅器 I"
+WhiteLootWeightMultiplier = 0.85
+GreenLootWeightMultiplier = 0.95
+BlueLootWeightMultiplier = 1.2
+PurpleLootWeightMultiplier = 1.5
+GoldLootWeightMultiplier = 1.8
+RedLootWeightMultiplier = 2.2
+
+[sub_resource type="Resource" id="Usable"]
+script = ExtResource("2_usable")
+ContainerModifierProfile = SubResource("ModifierProfile")
+ConsumeOnUse = true
+AllowUseAtFull = true
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "loot_rate_booster_i"
+DisplayName = "爆率增幅器 I"
+Category = 4
+GridWidth = 1
+GridHeight = 2
+CanRotate = true
+MaxStack = 3
+BaseValue = 14000
+Tags = Array[String](["loot", "rate", "modifier"])
+Usable = SubResource("Usable")

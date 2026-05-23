@@ -1,0 +1,862 @@
+[gd_scene load_steps=16 format=3]
+
+[ext_resource type="Script" uid="uid://cy54pp2e5qjow" path="res://scripts/presentation/DraggableWindow.cs" id="1_dragwindow"]
+[ext_resource type="Script" uid="uid://c2scun08q4ke" path="res://scripts/presentation/InventoryGridView.cs" id="2_inventorygridview"]
+[ext_resource type="Script" uid="uid://couoq2i7vialp" path="res://scripts/presentation/CombatHudPresenter.cs" id="3_combathud"]
+[ext_resource type="Script" uid="uid://bxa2gsxjam3lj" path="res://scripts/presentation/ItemScreenCoordinator.cs" id="4_itemscreencoordinator"]
+[ext_resource type="Script" uid="uid://cx4lxdr0km6qq" path="res://scripts/presentation/InventoryUiController.cs" id="5_inventoryuicontroller"]
+[ext_resource type="Script" uid="uid://d3tlvakjauap4" path="res://scripts/presentation/InventoryInteractionController.cs" id="6_inventoryinteraction"]
+[ext_resource type="Script" uid="uid://bgcc01vchmqyo" path="res://scripts/presentation/PlayerInventoryWindowPresenter.cs" id="7_playerwindowpresenter"]
+[ext_resource type="Script" uid="uid://ctr6wo1yrugk2" path="res://scripts/presentation/ContainerWindowPresenter.cs" id="8_containerwindowpresenter"]
+[ext_resource type="Script" uid="uid://oynoa77xn5nx" path="res://scripts/presentation/InventoryStatusPresenter.cs" id="9_inventorystatus"]
+[ext_resource type="Script" uid="uid://he2pgpkh4rxu" path="res://scripts/presentation/InventoryDragHintPresenter.cs" id="10_inventorydraghint"]
+[ext_resource type="Script" uid="uid://cpwsdmwu4j4k3" path="res://scripts/presentation/ItemDetailsPanelPresenter.cs" id="11_itemdetailspresenter"]
+[ext_resource type="Script" uid="uid://dl1i7qe2jnvlm" path="res://scripts/presentation/EquipmentPanelPresenter.cs" id="12_equipmentpanelpresenter"]
+[ext_resource type="Script" uid="uid://dbnw40vv205c2" path="res://scripts/presentation/PlayerUiContext.cs" id="13_playeruicontext"]
+[ext_resource type="Script" uid="uid://ddik4njfnbuks" path="res://scripts/presentation/PlayerStatusPanelPresenter.cs" id="14_playerstatuspresenter"]
+[ext_resource type="Script" path="res://scripts/presentation/EconomyPanelPresenter.cs" id="15_economypresenter"]
+[ext_resource type="Script" path="res://scripts/presentation/SettingsMenuController.cs" id="16_settingsmenu"]
+[ext_resource type="Script" path="res://scripts/presentation/SecureContainerPanelPresenter.cs" id="17_securecontainerpresenter"]
+[ext_resource type="Script" path="res://scripts/presentation/ContainerModifierStatusPresenter.cs" id="18_containermodstatus"]
+[ext_resource type="Script" path="res://scripts/presentation/FirearmDebugPanelPresenter.cs" id="19_firearmdebug"]
+[ext_resource type="Script" path="res://scripts/presentation/FirearmWeaponHudPresenter.cs" id="20_firearmhud"]
+
+[node name="GameUiRoot" type="CanvasLayer"]
+
+[node name="Controllers" type="Node" parent="."]
+
+[node name="PlayerUiContext" type="Node" parent="Controllers"]
+script = ExtResource("13_playeruicontext")
+
+[node name="CombatHudPresenter" type="Node" parent="Controllers"]
+script = ExtResource("3_combathud")
+
+[node name="ItemScreenCoordinator" type="Node" parent="Controllers"]
+script = ExtResource("4_itemscreencoordinator")
+
+[node name="InventoryUiController" type="Node" parent="Controllers"]
+script = ExtResource("5_inventoryuicontroller")
+
+[node name="InventoryInteractionController" type="Node" parent="Controllers"]
+script = ExtResource("6_inventoryinteraction")
+
+[node name="PlayerInventoryWindowPresenter" type="Node" parent="Controllers"]
+script = ExtResource("7_playerwindowpresenter")
+
+[node name="ContainerWindowPresenter" type="Node" parent="Controllers"]
+script = ExtResource("8_containerwindowpresenter")
+
+[node name="InventoryStatusPresenter" type="Node" parent="Controllers"]
+script = ExtResource("9_inventorystatus")
+
+[node name="InventoryDragHintPresenter" type="Node" parent="Controllers"]
+script = ExtResource("10_inventorydraghint")
+
+[node name="ItemDetailsPanelPresenter" type="Node" parent="Controllers"]
+script = ExtResource("11_itemdetailspresenter")
+
+[node name="EquipmentPanelPresenter" type="Node" parent="Controllers"]
+script = ExtResource("12_equipmentpanelpresenter")
+
+[node name="PlayerStatusPanelPresenter" type="Node" parent="Controllers"]
+script = ExtResource("14_playerstatuspresenter")
+
+[node name="EconomyPanelPresenter" type="Node" parent="Controllers"]
+script = ExtResource("15_economypresenter")
+
+[node name="SettingsMenuController" type="Node" parent="Controllers"]
+script = ExtResource("16_settingsmenu")
+
+[node name="SecureContainerPanelPresenter" type="Node" parent="Controllers"]
+script = ExtResource("17_securecontainerpresenter")
+
+[node name="ContainerModifierStatusPresenter" type="Node" parent="Controllers"]
+script = ExtResource("18_containermodstatus")
+
+[node name="FirearmDebugPanelPresenter" type="Node" parent="Controllers"]
+script = ExtResource("19_firearmdebug")
+
+[node name="FirearmWeaponHudPresenter" type="Node" parent="Controllers"]
+script = ExtResource("20_firearmhud")
+
+[node name="TopLeft" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 332.0
+offset_bottom = 188.0
+
+[node name="TopPanel" type="PanelContainer" parent="TopLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="TopLeft/TopPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="TopLeft/TopPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HealthLabel" type="Label" parent="TopLeft/TopPanel/Margin/VBox"]
+layout_mode = 2
+text = "生命  100/100"
+
+[node name="HealthBar" type="ProgressBar" parent="TopLeft/TopPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="ResourceLabel" type="Label" parent="TopLeft/TopPanel/Margin/VBox"]
+layout_mode = 2
+text = "资源  100/100"
+
+[node name="ResourceBar" type="ProgressBar" parent="TopLeft/TopPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="ArmorLabel" type="Label" parent="TopLeft/TopPanel/Margin/VBox"]
+layout_mode = 2
+text = "护甲  0/0"
+
+[node name="SearchStatusRow" type="HBoxContainer" parent="TopLeft/TopPanel/Margin/VBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SearchStatusTooltip" type="PanelContainer" parent="TopLeft"]
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = 156.0
+offset_right = 220.0
+offset_bottom = 236.0
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="TopLeft/SearchStatusTooltip"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Text" type="Label" parent="TopLeft/SearchStatusTooltip/Margin"]
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="ArmorBar" type="ProgressBar" parent="TopLeft/TopPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+show_percentage = false
+
+[node name="TargetLabel" type="Label" parent="TopLeft/TopPanel/Margin/VBox"]
+layout_mode = 2
+text = "目标  自由"
+
+[node name="TargetTop" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = 18.0
+offset_right = 170.0
+offset_bottom = 128.0
+grow_horizontal = 2
+
+[node name="TopRight" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_top = 18.0
+offset_right = -20.0
+offset_bottom = 72.0
+
+[node name="CreditsPanel" type="PanelContainer" parent="TopRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="TopRight/CreditsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="CreditsLabel" type="Label" parent="TopRight/CreditsPanel/Margin"]
+layout_mode = 2
+horizontal_alignment = 2
+text = "资金  0"
+
+[node name="TargetPanel" type="PanelContainer" parent="TargetTop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="TargetTop/TargetPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="TargetTop/TargetPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TargetHealthLabel" type="Label" parent="TargetTop/TargetPanel/Margin/VBox"]
+layout_mode = 2
+text = "无目标"
+horizontal_alignment = 1
+
+[node name="TargetHealthBar" type="ProgressBar" parent="TargetTop/TargetPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+show_percentage = false
+
+[node name="TargetArmorLabel" type="Label" parent="TargetTop/TargetPanel/Margin/VBox"]
+layout_mode = 2
+text = "护甲  --"
+horizontal_alignment = 1
+
+[node name="TargetArmorBar" type="ProgressBar" parent="TargetTop/TargetPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+show_percentage = false
+
+[node name="BottomBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 180.0
+offset_top = -132.0
+offset_right = -180.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SkillPanel" type="PanelContainer" parent="BottomBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="BottomBar/SkillPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="Slots" type="HBoxContainer" parent="BottomBar/SkillPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="AtkSlot" type="Label" parent="BottomBar/SkillPanel/Margin/Slots"]
+custom_minimum_size = Vector2(112, 72)
+layout_mode = 2
+text = "ATK\n普通攻击\n就绪"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="USlot" type="Label" parent="BottomBar/SkillPanel/Margin/Slots"]
+custom_minimum_size = Vector2(112, 72)
+layout_mode = 2
+text = "U\n技能槽 1\n就绪"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ISlot" type="Label" parent="BottomBar/SkillPanel/Margin/Slots"]
+custom_minimum_size = Vector2(112, 72)
+layout_mode = 2
+text = "I\n技能槽 2\n就绪"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OSlot" type="Label" parent="BottomBar/SkillPanel/Margin/Slots"]
+custom_minimum_size = Vector2(112, 72)
+layout_mode = 2
+text = "O\n技能槽 3\n就绪"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PSlot" type="Label" parent="BottomBar/SkillPanel/Margin/Slots"]
+custom_minimum_size = Vector2(112, 72)
+layout_mode = 2
+text = "P\n技能槽 4\n就绪"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryUi" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FirearmDebugPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1020.0
+offset_top = 86.0
+offset_right = 1368.0
+offset_bottom = 496.0
+
+[node name="Margin" type="MarginContainer" parent="FirearmDebugPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="FirearmDebugPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderBar" type="HBoxContainer" parent="FirearmDebugPanel/Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="FirearmDebugPanel/Margin/VBox/HeaderBar"]
+size_flags_horizontal = 3
+text = "枪械调试"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="FirearmDebugPanel/Margin/VBox/HeaderBar"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+text = "X"
+
+[node name="Summary" type="Label" parent="FirearmDebugPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+text = "枪械调试"
+autowrap_mode = 2
+
+[node name="SettingsOverlay" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Backdrop" type="ColorRect" parent="SettingsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.62)
+
+[node name="Window" type="PanelContainer" parent="SettingsOverlay"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 90.0
+offset_right = 1200.0
+offset_bottom = 650.0
+
+[node name="Margin" type="MarginContainer" parent="SettingsOverlay/Window"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="SettingsOverlay/Window/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderBar" type="HBoxContainer" parent="SettingsOverlay/Window/Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="SettingsOverlay/Window/Margin/VBox/HeaderBar"]
+size_flags_horizontal = 3
+text = "设置"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="SettingsOverlay/Window/Margin/VBox/HeaderBar"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+text = "X"
+
+[node name="Tabs" type="TabContainer" parent="SettingsOverlay/Window/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="ControlsTab" type="PanelContainer" parent="SettingsOverlay/Window/Margin/VBox/Tabs"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="SettingsOverlay/Window/Margin/VBox/Tabs/ControlsTab"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Scroll" type="ScrollContainer" parent="SettingsOverlay/Window/Margin/VBox/Tabs/ControlsTab/Margin"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="SettingsOverlay/Window/Margin/VBox/Tabs/ControlsTab/Margin/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ControlsHint" type="Label" parent="SettingsOverlay/Window/Margin/VBox/Tabs/ControlsTab/Margin"]
+layout_mode = 2
+text = "点击更换后按下一个键。"
+
+[node name="LanguageTab" type="PanelContainer" parent="SettingsOverlay/Window/Margin/VBox/Tabs"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="SettingsOverlay/Window/Margin/VBox/Tabs/LanguageTab"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="SettingsOverlay/Window/Margin/VBox/Tabs/LanguageTab/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LanguageLabel" type="Label" parent="SettingsOverlay/Window/Margin/VBox/Tabs/LanguageTab/Margin/VBox"]
+layout_mode = 2
+text = "语言切换"
+
+[node name="LanguageOption" type="OptionButton" parent="SettingsOverlay/Window/Margin/VBox/Tabs/LanguageTab/Margin/VBox"]
+custom_minimum_size = Vector2(240, 34)
+layout_mode = 2
+
+[node name="GraphicsTab" type="PanelContainer" parent="SettingsOverlay/Window/Margin/VBox/Tabs"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="SettingsOverlay/Window/Margin/VBox/Tabs/GraphicsTab"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="SettingsOverlay/Window/Margin/VBox/Tabs/GraphicsTab/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GraphicsLabel" type="Label" parent="SettingsOverlay/Window/Margin/VBox/Tabs/GraphicsTab/Margin/VBox"]
+layout_mode = 2
+text = "画面模式"
+
+[node name="GraphicsModeOption" type="OptionButton" parent="SettingsOverlay/Window/Margin/VBox/Tabs/GraphicsTab/Margin/VBox"]
+custom_minimum_size = Vector2(240, 34)
+layout_mode = 2
+
+[node name="ResolutionLabel" type="Label" parent="SettingsOverlay/Window/Margin/VBox/Tabs/GraphicsTab/Margin/VBox"]
+layout_mode = 2
+text = "分辨率"
+
+[node name="ResolutionOption" type="OptionButton" parent="SettingsOverlay/Window/Margin/VBox/Tabs/GraphicsTab/Margin/VBox"]
+custom_minimum_size = Vector2(240, 34)
+layout_mode = 2
+
+[node name="VsyncLabel" type="Label" parent="SettingsOverlay/Window/Margin/VBox/Tabs/GraphicsTab/Margin/VBox"]
+layout_mode = 2
+text = "垂直同步"
+
+[node name="VsyncToggle" type="CheckButton" parent="SettingsOverlay/Window/Margin/VBox/Tabs/GraphicsTab/Margin/VBox"]
+custom_minimum_size = Vector2(240, 30)
+layout_mode = 2
+text = "启用"
+
+[node name="FpsLabel" type="Label" parent="SettingsOverlay/Window/Margin/VBox/Tabs/GraphicsTab/Margin/VBox"]
+layout_mode = 2
+text = "帧率上限"
+
+[node name="FpsSpin" type="SpinBox" parent="SettingsOverlay/Window/Margin/VBox/Tabs/GraphicsTab/Margin/VBox"]
+custom_minimum_size = Vector2(240, 34)
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="InventoryUi"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 420.0
+offset_bottom = 48.0
+text = "就绪"
+
+[node name="PlayerInventoryWindow" type="PanelContainer" parent="InventoryUi"]
+visible = false
+layout_mode = 0
+offset_left = 90.0
+offset_top = 100.0
+offset_right = 980.0
+offset_bottom = 560.0
+script = ExtResource("1_dragwindow")
+
+[node name="Margin" type="MarginContainer" parent="InventoryUi/PlayerInventoryWindow"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderBar" type="HBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/HeaderBar"]
+size_flags_horizontal = 3
+text = "角色背包"
+horizontal_alignment = 1
+
+[node name="RunLootLabel" type="Label" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/HeaderBar"]
+layout_mode = 2
+text = "本局收获  0"
+
+[node name="CloseButton" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/HeaderBar"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+text = "X"
+
+[node name="ContentRow" type="HBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="StatusColumn" type="VBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+
+[node name="StatusPanel" type="PanelContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/StatusColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/StatusColumn/StatusPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/StatusColumn/StatusPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="Label" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/StatusColumn/StatusPanel/Margin/VBox"]
+layout_mode = 2
+text = "角色状态"
+horizontal_alignment = 1
+
+[node name="Summary" type="Label" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/StatusColumn/StatusPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+text = "生命 100/100"
+autowrap_mode = 2
+
+[node name="EquipmentColumn" type="VBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+
+[node name="EquipmentPanel" type="PanelContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="Label" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox"]
+layout_mode = 2
+text = "装备"
+horizontal_alignment = 1
+
+[node name="Summary" type="Label" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+text = "装备"
+autowrap_mode = 2
+
+[node name="Slots" type="VBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WeaponSlot1" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox/Slots"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "武器槽 1"
+
+[node name="WeaponSlot2" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox/Slots"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "武器槽 2"
+
+[node name="GlovesSlot" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox/Slots"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "手套"
+
+[node name="ArmorSlot" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox/Slots"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "护甲"
+
+[node name="ChestSlot" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox/Slots"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "鞋子"
+
+[node name="LegsSlot" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox/Slots"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "道具槽 1"
+
+[node name="HandsSlot" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox/Slots"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "道具槽 2"
+
+[node name="ShoesSlot" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox/Slots"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "道具槽 3"
+
+[node name="Item1Slot" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox/Slots"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "未使用 1"
+
+[node name="Accessory2Slot" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/EquipmentColumn/EquipmentPanel/Margin/VBox/Slots"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "未使用 2"
+
+[node name="InventoryColumn" type="VBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Summary" type="Label" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn"]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+text = "角色背包"
+autowrap_mode = 2
+
+[node name="Grid" type="Control" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn"]
+script = ExtResource("2_inventorygridview")
+layout_mode = 2
+
+[node name="SecureContainerPanel" type="PanelContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn"]
+visible = false
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn/SecureContainerPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SecureVBox" type="VBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn/SecureContainerPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SecureHeader" type="Label" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn/SecureContainerPanel/Margin/SecureVBox"]
+layout_mode = 2
+text = "安全箱"
+horizontal_alignment = 1
+
+[node name="SecureStatus" type="Label" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn/SecureContainerPanel/Margin/SecureVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "保险状态  无保险"
+autowrap_mode = 2
+
+[node name="SecureActions" type="HBoxContainer" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn/SecureContainerPanel/Margin/SecureVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RentalButton" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn/SecureContainerPanel/Margin/SecureVBox/SecureActions"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "购买时效保险"
+
+[node name="QuotaButton" type="Button" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn/SecureContainerPanel/Margin/SecureVBox/SecureActions"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "购买额度保险"
+
+[node name="SecureGrid" type="Control" parent="InventoryUi/PlayerInventoryWindow/Margin/VBox/ContentRow/InventoryColumn/SecureContainerPanel/Margin/SecureVBox"]
+script = ExtResource("2_inventorygridview")
+layout_mode = 2
+
+[node name="ContainerWindow" type="PanelContainer" parent="InventoryUi"]
+visible = false
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 100.0
+offset_right = 1380.0
+offset_bottom = 560.0
+script = ExtResource("1_dragwindow")
+
+[node name="Margin" type="MarginContainer" parent="InventoryUi/ContainerWindow"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="InventoryUi/ContainerWindow/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderBar" type="HBoxContainer" parent="InventoryUi/ContainerWindow/Margin/VBox"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="InventoryUi/ContainerWindow/Margin/VBox/HeaderBar"]
+size_flags_horizontal = 3
+text = "容器"
+horizontal_alignment = 1
+
+[node name="SellModeButton" type="Button" parent="InventoryUi/ContainerWindow/Margin/VBox/HeaderBar"]
+custom_minimum_size = Vector2(72, 28)
+visible = false
+layout_mode = 2
+text = "出售"
+
+[node name="SellSelectedButton" type="Button" parent="InventoryUi/ContainerWindow/Margin/VBox/HeaderBar"]
+custom_minimum_size = Vector2(120, 28)
+visible = false
+layout_mode = 2
+text = "一键出售"
+
+[node name="CloseButton" type="Button" parent="InventoryUi/ContainerWindow/Margin/VBox/HeaderBar"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+text = "X"
+
+[node name="Summary" type="Label" parent="InventoryUi/ContainerWindow/Margin/VBox"]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+text = "容器"
+autowrap_mode = 2
+
+[node name="Grid" type="Control" parent="InventoryUi/ContainerWindow/Margin/VBox"]
+script = ExtResource("2_inventorygridview")
+layout_mode = 2
+
+[node name="ItemDetailsWindow" type="PanelContainer" parent="InventoryUi"]
+visible = false
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 300.0
+offset_right = 1360.0
+offset_bottom = 560.0
+script = ExtResource("1_dragwindow")
+
+[node name="Margin" type="MarginContainer" parent="InventoryUi/ItemDetailsWindow"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="InventoryUi/ItemDetailsWindow/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderBar" type="HBoxContainer" parent="InventoryUi/ItemDetailsWindow/Margin/VBox"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="InventoryUi/ItemDetailsWindow/Margin/VBox/HeaderBar"]
+size_flags_horizontal = 3
+text = "物品详情"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="InventoryUi/ItemDetailsWindow/Margin/VBox/HeaderBar"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+text = "X"
+
+[node name="Summary" type="Label" parent="InventoryUi/ItemDetailsWindow/Margin/VBox"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+text = "物品详情"
+autowrap_mode = 2
+
+[node name="WeaponSkillSlots" type="VBoxContainer" parent="InventoryUi/ItemDetailsWindow/Margin/VBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="WeaponSkillSlot1" type="Button" parent="InventoryUi/ItemDetailsWindow/Margin/VBox/WeaponSkillSlots"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "武器技能 1"
+
+[node name="WeaponSkillSlot2" type="Button" parent="InventoryUi/ItemDetailsWindow/Margin/VBox/WeaponSkillSlots"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "武器技能 2"
+
+[node name="WeaponSkillSlot3" type="Button" parent="InventoryUi/ItemDetailsWindow/Margin/VBox/WeaponSkillSlots"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "武器技能 3"
+
+[node name="WeaponSkillSlot4" type="Button" parent="InventoryUi/ItemDetailsWindow/Margin/VBox/WeaponSkillSlots"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "武器技能 4"
+
+[node name="DragHint" type="Label" parent="InventoryUi"]
+visible = false
+layout_mode = 0
+text = "拖拽中"

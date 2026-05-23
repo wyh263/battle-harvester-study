@@ -1,0 +1,608 @@
+[gd_resource type="Resource" script_class="LootTableDefinition" load_steps=69 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootTableDefinition.cs" id="1_table"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootEntryDefinition.cs" id="2_entry"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootBucketDefinition.cs" id="3_bucket"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootRarityWeightDefinition.cs" id="4_rarity_weight"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootCategoryWeightDefinition.cs" id="5_category_weight"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_blue_collectible_01.tres" id="10"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_blue_collectible_02.tres" id="11"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_blue_collectible_03.tres" id="12"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_blue_consumable_01.tres" id="13"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_blue_consumable_02.tres" id="14"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_blue_consumable_03.tres" id="15"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_blue_weapon_01.tres" id="16"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_blue_weapon_02.tres" id="17"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_blue_weapon_03.tres" id="18"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_blue_weapon_04.tres" id="19"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_gold_collectible_01.tres" id="20"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_gold_collectible_02.tres" id="21"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_gold_collectible_03.tres" id="22"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_gold_consumable_01.tres" id="23"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_gold_consumable_02.tres" id="24"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_gold_consumable_03.tres" id="25"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_gold_weapon_01.tres" id="26"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_gold_weapon_02.tres" id="27"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_gold_weapon_03.tres" id="28"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_gold_weapon_04.tres" id="29"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_green_collectible_01.tres" id="30"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_green_collectible_02.tres" id="31"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_green_collectible_03.tres" id="32"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_green_consumable_01.tres" id="33"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_green_consumable_02.tres" id="34"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_green_consumable_03.tres" id="35"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_green_weapon_01.tres" id="36"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_green_weapon_02.tres" id="37"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_green_weapon_03.tres" id="38"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_green_weapon_04.tres" id="39"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_purple_collectible_01.tres" id="40"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_purple_collectible_02.tres" id="41"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_purple_collectible_03.tres" id="42"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_purple_consumable_01.tres" id="43"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_purple_consumable_02.tres" id="44"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_purple_consumable_03.tres" id="45"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_purple_weapon_01.tres" id="46"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_purple_weapon_02.tres" id="47"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_purple_weapon_03.tres" id="48"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_purple_weapon_04.tres" id="49"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_red_collectible_01.tres" id="50"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_red_collectible_02.tres" id="51"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_red_collectible_03.tres" id="52"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_red_consumable_01.tres" id="53"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_red_consumable_02.tres" id="54"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_red_consumable_03.tres" id="55"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_red_weapon_01.tres" id="56"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_red_weapon_02.tres" id="57"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_red_weapon_03.tres" id="58"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_red_weapon_04.tres" id="59"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_white_collectible_01.tres" id="60"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_white_collectible_02.tres" id="61"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_white_collectible_03.tres" id="62"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_white_consumable_01.tres" id="63"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_white_consumable_02.tres" id="64"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_white_consumable_03.tres" id="65"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_white_weapon_01.tres" id="66"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_white_weapon_02.tres" id="67"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_white_weapon_03.tres" id="68"]
+[ext_resource type="Resource" path="res://resources/items/test_loot/test_white_weapon_04.tres" id="69"]
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_blue_collectible_01"]
+script = ExtResource("2_entry")
+EntryId = "test_blue_collectible_01"
+Item = ExtResource("10")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_blue_collectible_02"]
+script = ExtResource("2_entry")
+EntryId = "test_blue_collectible_02"
+Item = ExtResource("11")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_blue_collectible_03"]
+script = ExtResource("2_entry")
+EntryId = "test_blue_collectible_03"
+Item = ExtResource("12")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_blue_consumable_01"]
+script = ExtResource("2_entry")
+EntryId = "test_blue_consumable_01"
+Item = ExtResource("13")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_blue_consumable_02"]
+script = ExtResource("2_entry")
+EntryId = "test_blue_consumable_02"
+Item = ExtResource("14")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_blue_consumable_03"]
+script = ExtResource("2_entry")
+EntryId = "test_blue_consumable_03"
+Item = ExtResource("15")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_blue_weapon_01"]
+script = ExtResource("2_entry")
+EntryId = "test_blue_weapon_01"
+Item = ExtResource("16")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_blue_weapon_02"]
+script = ExtResource("2_entry")
+EntryId = "test_blue_weapon_02"
+Item = ExtResource("17")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_blue_weapon_03"]
+script = ExtResource("2_entry")
+EntryId = "test_blue_weapon_03"
+Item = ExtResource("18")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_blue_weapon_04"]
+script = ExtResource("2_entry")
+EntryId = "test_blue_weapon_04"
+Item = ExtResource("19")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_gold_collectible_01"]
+script = ExtResource("2_entry")
+EntryId = "test_gold_collectible_01"
+Item = ExtResource("20")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_gold_collectible_02"]
+script = ExtResource("2_entry")
+EntryId = "test_gold_collectible_02"
+Item = ExtResource("21")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_gold_collectible_03"]
+script = ExtResource("2_entry")
+EntryId = "test_gold_collectible_03"
+Item = ExtResource("22")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_gold_consumable_01"]
+script = ExtResource("2_entry")
+EntryId = "test_gold_consumable_01"
+Item = ExtResource("23")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_gold_consumable_02"]
+script = ExtResource("2_entry")
+EntryId = "test_gold_consumable_02"
+Item = ExtResource("24")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_gold_consumable_03"]
+script = ExtResource("2_entry")
+EntryId = "test_gold_consumable_03"
+Item = ExtResource("25")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_gold_weapon_01"]
+script = ExtResource("2_entry")
+EntryId = "test_gold_weapon_01"
+Item = ExtResource("26")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_gold_weapon_02"]
+script = ExtResource("2_entry")
+EntryId = "test_gold_weapon_02"
+Item = ExtResource("27")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_gold_weapon_03"]
+script = ExtResource("2_entry")
+EntryId = "test_gold_weapon_03"
+Item = ExtResource("28")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_gold_weapon_04"]
+script = ExtResource("2_entry")
+EntryId = "test_gold_weapon_04"
+Item = ExtResource("29")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_green_collectible_01"]
+script = ExtResource("2_entry")
+EntryId = "test_green_collectible_01"
+Item = ExtResource("30")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_green_collectible_02"]
+script = ExtResource("2_entry")
+EntryId = "test_green_collectible_02"
+Item = ExtResource("31")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_green_collectible_03"]
+script = ExtResource("2_entry")
+EntryId = "test_green_collectible_03"
+Item = ExtResource("32")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_green_consumable_01"]
+script = ExtResource("2_entry")
+EntryId = "test_green_consumable_01"
+Item = ExtResource("33")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_green_consumable_02"]
+script = ExtResource("2_entry")
+EntryId = "test_green_consumable_02"
+Item = ExtResource("34")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_green_consumable_03"]
+script = ExtResource("2_entry")
+EntryId = "test_green_consumable_03"
+Item = ExtResource("35")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_green_weapon_01"]
+script = ExtResource("2_entry")
+EntryId = "test_green_weapon_01"
+Item = ExtResource("36")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_green_weapon_02"]
+script = ExtResource("2_entry")
+EntryId = "test_green_weapon_02"
+Item = ExtResource("37")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_green_weapon_03"]
+script = ExtResource("2_entry")
+EntryId = "test_green_weapon_03"
+Item = ExtResource("38")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_green_weapon_04"]
+script = ExtResource("2_entry")
+EntryId = "test_green_weapon_04"
+Item = ExtResource("39")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_purple_collectible_01"]
+script = ExtResource("2_entry")
+EntryId = "test_purple_collectible_01"
+Item = ExtResource("40")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_purple_collectible_02"]
+script = ExtResource("2_entry")
+EntryId = "test_purple_collectible_02"
+Item = ExtResource("41")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_purple_collectible_03"]
+script = ExtResource("2_entry")
+EntryId = "test_purple_collectible_03"
+Item = ExtResource("42")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_purple_consumable_01"]
+script = ExtResource("2_entry")
+EntryId = "test_purple_consumable_01"
+Item = ExtResource("43")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_purple_consumable_02"]
+script = ExtResource("2_entry")
+EntryId = "test_purple_consumable_02"
+Item = ExtResource("44")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_purple_consumable_03"]
+script = ExtResource("2_entry")
+EntryId = "test_purple_consumable_03"
+Item = ExtResource("45")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_purple_weapon_01"]
+script = ExtResource("2_entry")
+EntryId = "test_purple_weapon_01"
+Item = ExtResource("46")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_purple_weapon_02"]
+script = ExtResource("2_entry")
+EntryId = "test_purple_weapon_02"
+Item = ExtResource("47")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_purple_weapon_03"]
+script = ExtResource("2_entry")
+EntryId = "test_purple_weapon_03"
+Item = ExtResource("48")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_purple_weapon_04"]
+script = ExtResource("2_entry")
+EntryId = "test_purple_weapon_04"
+Item = ExtResource("49")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_red_collectible_01"]
+script = ExtResource("2_entry")
+EntryId = "test_red_collectible_01"
+Item = ExtResource("50")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_red_collectible_02"]
+script = ExtResource("2_entry")
+EntryId = "test_red_collectible_02"
+Item = ExtResource("51")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_red_collectible_03"]
+script = ExtResource("2_entry")
+EntryId = "test_red_collectible_03"
+Item = ExtResource("52")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_red_consumable_01"]
+script = ExtResource("2_entry")
+EntryId = "test_red_consumable_01"
+Item = ExtResource("53")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_red_consumable_02"]
+script = ExtResource("2_entry")
+EntryId = "test_red_consumable_02"
+Item = ExtResource("54")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_red_consumable_03"]
+script = ExtResource("2_entry")
+EntryId = "test_red_consumable_03"
+Item = ExtResource("55")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_red_weapon_01"]
+script = ExtResource("2_entry")
+EntryId = "test_red_weapon_01"
+Item = ExtResource("56")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_red_weapon_02"]
+script = ExtResource("2_entry")
+EntryId = "test_red_weapon_02"
+Item = ExtResource("57")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_red_weapon_03"]
+script = ExtResource("2_entry")
+EntryId = "test_red_weapon_03"
+Item = ExtResource("58")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_red_weapon_04"]
+script = ExtResource("2_entry")
+EntryId = "test_red_weapon_04"
+Item = ExtResource("59")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_white_collectible_01"]
+script = ExtResource("2_entry")
+EntryId = "test_white_collectible_01"
+Item = ExtResource("60")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_white_collectible_02"]
+script = ExtResource("2_entry")
+EntryId = "test_white_collectible_02"
+Item = ExtResource("61")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_white_collectible_03"]
+script = ExtResource("2_entry")
+EntryId = "test_white_collectible_03"
+Item = ExtResource("62")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_white_consumable_01"]
+script = ExtResource("2_entry")
+EntryId = "test_white_consumable_01"
+Item = ExtResource("63")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_white_consumable_02"]
+script = ExtResource("2_entry")
+EntryId = "test_white_consumable_02"
+Item = ExtResource("64")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_white_consumable_03"]
+script = ExtResource("2_entry")
+EntryId = "test_white_consumable_03"
+Item = ExtResource("65")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_white_weapon_01"]
+script = ExtResource("2_entry")
+EntryId = "test_white_weapon_01"
+Item = ExtResource("66")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_white_weapon_02"]
+script = ExtResource("2_entry")
+EntryId = "test_white_weapon_02"
+Item = ExtResource("67")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_white_weapon_03"]
+script = ExtResource("2_entry")
+EntryId = "test_white_weapon_03"
+Item = ExtResource("68")
+Weight = 1
+
+[sub_resource type="Resource" id="LootEntryDefinition_test_white_weapon_04"]
+script = ExtResource("2_entry")
+EntryId = "test_white_weapon_04"
+Item = ExtResource("69")
+Weight = 1
+
+[sub_resource type="Resource" id="LootRarityWeight_white"]
+script = ExtResource("4_rarity_weight")
+Rarity = 1
+Weight = 1.0
+
+[sub_resource type="Resource" id="LootRarityWeight_green"]
+script = ExtResource("4_rarity_weight")
+Rarity = 2
+Weight = 1.0
+
+[sub_resource type="Resource" id="LootRarityWeight_blue"]
+script = ExtResource("4_rarity_weight")
+Rarity = 3
+Weight = 1.0
+
+[sub_resource type="Resource" id="LootRarityWeight_purple"]
+script = ExtResource("4_rarity_weight")
+Rarity = 4
+Weight = 1.0
+
+[sub_resource type="Resource" id="LootRarityWeight_gold"]
+script = ExtResource("4_rarity_weight")
+Rarity = 5
+Weight = 1.0
+
+[sub_resource type="Resource" id="LootRarityWeight_red"]
+script = ExtResource("4_rarity_weight")
+Rarity = 6
+Weight = 1.0
+
+[sub_resource type="Resource" id="LootCategoryWeight_weapon"]
+script = ExtResource("5_category_weight")
+Category = 1
+Weight = 1.0
+
+[sub_resource type="Resource" id="LootCategoryWeight_consumable"]
+script = ExtResource("5_category_weight")
+Category = 4
+Weight = 1.0
+
+[sub_resource type="Resource" id="LootCategoryWeight_collectible"]
+script = ExtResource("5_category_weight")
+Category = 8
+Weight = 1.0
+
+[sub_resource type="Resource" id="LootBucket_white_weapon"]
+script = ExtResource("3_bucket")
+BucketId = "white_weapon"
+Rarity = 1
+Category = 1
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_white_weapon_01"), SubResource("LootEntryDefinition_test_white_weapon_02"), SubResource("LootEntryDefinition_test_white_weapon_03"), SubResource("LootEntryDefinition_test_white_weapon_04")])
+
+[sub_resource type="Resource" id="LootBucket_white_consumable"]
+script = ExtResource("3_bucket")
+BucketId = "white_consumable"
+Rarity = 1
+Category = 4
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_white_consumable_01"), SubResource("LootEntryDefinition_test_white_consumable_02"), SubResource("LootEntryDefinition_test_white_consumable_03")])
+
+[sub_resource type="Resource" id="LootBucket_white_collectible"]
+script = ExtResource("3_bucket")
+BucketId = "white_collectible"
+Rarity = 1
+Category = 8
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_white_collectible_01"), SubResource("LootEntryDefinition_test_white_collectible_02"), SubResource("LootEntryDefinition_test_white_collectible_03")])
+
+[sub_resource type="Resource" id="LootBucket_green_weapon"]
+script = ExtResource("3_bucket")
+BucketId = "green_weapon"
+Rarity = 2
+Category = 1
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_green_weapon_01"), SubResource("LootEntryDefinition_test_green_weapon_02"), SubResource("LootEntryDefinition_test_green_weapon_03"), SubResource("LootEntryDefinition_test_green_weapon_04")])
+
+[sub_resource type="Resource" id="LootBucket_green_consumable"]
+script = ExtResource("3_bucket")
+BucketId = "green_consumable"
+Rarity = 2
+Category = 4
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_green_consumable_01"), SubResource("LootEntryDefinition_test_green_consumable_02"), SubResource("LootEntryDefinition_test_green_consumable_03")])
+
+[sub_resource type="Resource" id="LootBucket_green_collectible"]
+script = ExtResource("3_bucket")
+BucketId = "green_collectible"
+Rarity = 2
+Category = 8
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_green_collectible_01"), SubResource("LootEntryDefinition_test_green_collectible_02"), SubResource("LootEntryDefinition_test_green_collectible_03")])
+
+[sub_resource type="Resource" id="LootBucket_blue_weapon"]
+script = ExtResource("3_bucket")
+BucketId = "blue_weapon"
+Rarity = 3
+Category = 1
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_blue_weapon_01"), SubResource("LootEntryDefinition_test_blue_weapon_02"), SubResource("LootEntryDefinition_test_blue_weapon_03"), SubResource("LootEntryDefinition_test_blue_weapon_04")])
+
+[sub_resource type="Resource" id="LootBucket_blue_consumable"]
+script = ExtResource("3_bucket")
+BucketId = "blue_consumable"
+Rarity = 3
+Category = 4
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_blue_consumable_01"), SubResource("LootEntryDefinition_test_blue_consumable_02"), SubResource("LootEntryDefinition_test_blue_consumable_03")])
+
+[sub_resource type="Resource" id="LootBucket_blue_collectible"]
+script = ExtResource("3_bucket")
+BucketId = "blue_collectible"
+Rarity = 3
+Category = 8
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_blue_collectible_01"), SubResource("LootEntryDefinition_test_blue_collectible_02"), SubResource("LootEntryDefinition_test_blue_collectible_03")])
+
+[sub_resource type="Resource" id="LootBucket_purple_weapon"]
+script = ExtResource("3_bucket")
+BucketId = "purple_weapon"
+Rarity = 4
+Category = 1
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_purple_weapon_01"), SubResource("LootEntryDefinition_test_purple_weapon_02"), SubResource("LootEntryDefinition_test_purple_weapon_03"), SubResource("LootEntryDefinition_test_purple_weapon_04")])
+
+[sub_resource type="Resource" id="LootBucket_purple_consumable"]
+script = ExtResource("3_bucket")
+BucketId = "purple_consumable"
+Rarity = 4
+Category = 4
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_purple_consumable_01"), SubResource("LootEntryDefinition_test_purple_consumable_02"), SubResource("LootEntryDefinition_test_purple_consumable_03")])
+
+[sub_resource type="Resource" id="LootBucket_purple_collectible"]
+script = ExtResource("3_bucket")
+BucketId = "purple_collectible"
+Rarity = 4
+Category = 8
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_purple_collectible_01"), SubResource("LootEntryDefinition_test_purple_collectible_02"), SubResource("LootEntryDefinition_test_purple_collectible_03")])
+
+[sub_resource type="Resource" id="LootBucket_gold_weapon"]
+script = ExtResource("3_bucket")
+BucketId = "gold_weapon"
+Rarity = 5
+Category = 1
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_gold_weapon_01"), SubResource("LootEntryDefinition_test_gold_weapon_02"), SubResource("LootEntryDefinition_test_gold_weapon_03"), SubResource("LootEntryDefinition_test_gold_weapon_04")])
+
+[sub_resource type="Resource" id="LootBucket_gold_consumable"]
+script = ExtResource("3_bucket")
+BucketId = "gold_consumable"
+Rarity = 5
+Category = 4
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_gold_consumable_01"), SubResource("LootEntryDefinition_test_gold_consumable_02"), SubResource("LootEntryDefinition_test_gold_consumable_03")])
+
+[sub_resource type="Resource" id="LootBucket_gold_collectible"]
+script = ExtResource("3_bucket")
+BucketId = "gold_collectible"
+Rarity = 5
+Category = 8
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_gold_collectible_01"), SubResource("LootEntryDefinition_test_gold_collectible_02"), SubResource("LootEntryDefinition_test_gold_collectible_03")])
+
+[sub_resource type="Resource" id="LootBucket_red_weapon"]
+script = ExtResource("3_bucket")
+BucketId = "red_weapon"
+Rarity = 6
+Category = 1
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_red_weapon_01"), SubResource("LootEntryDefinition_test_red_weapon_02"), SubResource("LootEntryDefinition_test_red_weapon_03"), SubResource("LootEntryDefinition_test_red_weapon_04")])
+
+[sub_resource type="Resource" id="LootBucket_red_consumable"]
+script = ExtResource("3_bucket")
+BucketId = "red_consumable"
+Rarity = 6
+Category = 4
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_red_consumable_01"), SubResource("LootEntryDefinition_test_red_consumable_02"), SubResource("LootEntryDefinition_test_red_consumable_03")])
+
+[sub_resource type="Resource" id="LootBucket_red_collectible"]
+script = ExtResource("3_bucket")
+BucketId = "red_collectible"
+Rarity = 6
+Category = 8
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_test_red_collectible_01"), SubResource("LootEntryDefinition_test_red_collectible_02"), SubResource("LootEntryDefinition_test_red_collectible_03")])
+
+[resource]
+script = ExtResource("1_table")
+LootTableId = "test_rarity_loot_table"
+DisplayName = "Test Rarity Loot Table"
+MinRollCount = 4
+MaxRollCount = 8
+RarityWeights = Array[ExtResource("4_rarity_weight")]([SubResource("LootRarityWeight_white"), SubResource("LootRarityWeight_green"), SubResource("LootRarityWeight_blue"), SubResource("LootRarityWeight_purple"), SubResource("LootRarityWeight_gold"), SubResource("LootRarityWeight_red")])
+CategoryWeights = Array[ExtResource("5_category_weight")]([SubResource("LootCategoryWeight_weapon"), SubResource("LootCategoryWeight_consumable"), SubResource("LootCategoryWeight_collectible")])
+Buckets = Array[ExtResource("3_bucket")]([SubResource("LootBucket_white_weapon"), SubResource("LootBucket_white_consumable"), SubResource("LootBucket_white_collectible"), SubResource("LootBucket_green_weapon"), SubResource("LootBucket_green_consumable"), SubResource("LootBucket_green_collectible"), SubResource("LootBucket_blue_weapon"), SubResource("LootBucket_blue_consumable"), SubResource("LootBucket_blue_collectible"), SubResource("LootBucket_purple_weapon"), SubResource("LootBucket_purple_consumable"), SubResource("LootBucket_purple_collectible"), SubResource("LootBucket_gold_weapon"), SubResource("LootBucket_gold_consumable"), SubResource("LootBucket_gold_collectible"), SubResource("LootBucket_red_weapon"), SubResource("LootBucket_red_consumable"), SubResource("LootBucket_red_collectible")])

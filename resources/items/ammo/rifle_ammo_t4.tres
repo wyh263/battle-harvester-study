@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/items/AmmoItemDefinition.cs" id="2_ammo"]
+
+[sub_resource type="Resource" id="Ammo"]
+script = ExtResource("2_ammo")
+AmmoType = 2
+AmmoTier = 4
+PenetrationTier = 4.0
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "rifle_ammo_t4"
+DisplayName = "T4 Rifle Ammo"
+Category = 5
+MaxStack = 60
+BaseValue = 520
+LootRarity = 4
+Tags = Array[String](["ammo", "rifle", "tier4"])
+Ammo = SubResource("Ammo")

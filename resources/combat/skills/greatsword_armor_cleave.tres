@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_attack_followup_cone_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/damage_100.tres" id="3_damage"]
+[ext_resource type="Resource" path="res://resources/combat/effects/launch_small.tres" id="4_launch"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "greatsword_armor_cleave"
+DisplayName = "Greatsword Armor Cleave"
+SkillTags = Array[String](["weapon_skill", "sharp", "greatsword_skill", "armor_break"])
+LoadoutCategory = 0
+ActionType = 2
+SkillMultiplier = 1.7
+PowerTier = 3.2
+DestructionMultiplier = 1.8
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 4
+RequiredWeaponTraitMask = 64
+StartupLabel = "WIND"
+ActiveLabel = "BREAK"
+RecoveryLabel = "HEAVE"
+StartupSeconds = 0.2
+ActiveSeconds = 0.16
+RecoverySeconds = 0.48
+BaseCooldownSeconds = 1.8
+BaseGlobalCooldownSeconds = 0.24
+CanBeInterruptedDuringStartup = false
+InterruptArmorDuringStartup = 3
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage"), ExtResource("4_launch")]

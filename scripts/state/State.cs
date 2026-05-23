@@ -1,15 +1,17 @@
 using Godot;
 
-namespace BattleHarvesterStudy;
+namespace BattleHarvesterStudy.State;
 
 public abstract partial class State : Node
 {
-	protected Player Entity { get; private set; } = null!;
+	protected Node3D EntityNode { get; private set; } = null!;
+	protected IStateActor Actor { get; private set; } = null!;
 	protected StateMachine Machine { get; private set; } = null!;
 
-	public virtual void Init(Player entity, StateMachine machine)
+	public virtual void Init(Node3D entityNode, IStateActor actor, StateMachine machine)
 	{
-		Entity = entity;
+		EntityNode = entityNode;
+		Actor = actor;
 		Machine = machine;
 		SetPhysicsProcess(false);
 	}

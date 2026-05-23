@@ -1,23 +1,53 @@
 [gd_scene format=3 uid="uid://bp588kn7c3ifx"]
 
-[ext_resource type="Script" uid="uid://bfni2a4qil8r3" path="res://scripts/entities/Player.cs" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bfni2a4qil8r3" path="res://scripts/actors/Player.cs" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cbqsv722nluci" path="res://scripts/attributes/StatsComponent.cs" id="2_g2els"]
+[ext_resource type="Script" uid="uid://dr0ih6e7ntn0d" path="res://scripts/attributes/HealthComponent.cs" id="2_health"]
+[ext_resource type="Script" uid="uid://cknuwy7lmc52h" path="res://scripts/attributes/ArmorComponent.cs" id="2_armor"]
+[ext_resource type="Script" uid="uid://bfv26b6tt1t4g" path="res://scripts/attributes/DeathStateController.cs" id="2_death"]
+[ext_resource type="Script" uid="uid://cc6qvwd14fbb" path="res://scripts/locomotion/ForcedMovementComponent.cs" id="3_forced"]
 [ext_resource type="Script" uid="uid://yijya18q8rp8" path="res://scripts/locomotion/Mover.cs" id="3_qhqgy"]
-[ext_resource type="Script" path="res://scripts/locomotion/ForcedMovementComponent.cs" id="3_forced"]
 [ext_resource type="Script" uid="uid://cw05sfpw34xpk" path="res://scripts/camera/CameraFollowPivot.cs" id="4_cam"]
 [ext_resource type="Script" uid="uid://dktwxi2jxfwc0" path="res://scripts/state/StateMachine.cs" id="4_qlg0r"]
-[ext_resource type="Script" uid="uid://dirf8dmget3a7" path="res://Systems/Locomotion/IdleState.cs" id="5_fjrip"]
-[ext_resource type="Script" uid="uid://bacpo8nchhvo8" path="res://Systems/Locomotion/MoveState.cs" id="6_smehm"]
-[ext_resource type="Script" uid="uid://cdblr82fxu7n" path="res://Systems/Combat/Core/AttackState.cs" id="7_smehm"]
-[ext_resource type="Script" uid="uid://cfl7bebu0bjbq" path="res://Systems/Locomotion/DashState.cs" id="8_dash"]
-[ext_resource type="Script" uid="uid://sfswomkbklrs" path="res://Systems/Combat/Core/Hurtbox.cs" id="9_ur7pv"]
-[ext_resource type="Script" uid="uid://d0upq01hkf1e6" path="res://Systems/Combat/Core/Hitbox.cs" id="10_y4r1p"]
+[ext_resource type="Script" uid="uid://dirf8dmget3a7" path="res://scripts/locomotion/states/IdleState.cs" id="5_fjrip"]
+[ext_resource type="Script" uid="uid://bacpo8nchhvo8" path="res://scripts/locomotion/states/MoveState.cs" id="6_smehm"]
+[ext_resource type="Script" uid="uid://b04eijjqq8nwh" path="res://scripts/combat/core/AttackState.cs" id="7_smehm"]
+[ext_resource type="Script" uid="uid://cfl7bebu0bjbq" path="res://scripts/locomotion/states/DashState.cs" id="8_dash"]
+[ext_resource type="Script" uid="uid://q0nk351of7q7" path="res://scripts/combat/core/Hurtbox.cs" id="9_ur7pv"]
+[ext_resource type="Script" uid="uid://b8422k7hk2uuj" path="res://scripts/combat/core/Hitbox.cs" id="10_y4r1p"]
 [ext_resource type="Script" uid="uid://b8ngjy0s3bd1f" path="res://scripts/reactions/HitReactionComponent.cs" id="11_hitreact"]
-[ext_resource type="Script" path="res://Systems/Combat/Core/CombatResolver.cs" id="12_resolver"]
-[ext_resource type="Script" path="res://Systems/Combat/Core/AttackExecutor.cs" id="13_executor"]
-[ext_resource type="Script" path="res://scripts/locomotion/MovementHost.cs" id="14_movehost"]
-[ext_resource type="Script" path="res://scripts/effects/StatusEffectComponent.cs" id="15_status"]
-[ext_resource type="Script" path="res://scripts/effects/LaunchMotionComponent.cs" id="16_launch"]
+[ext_resource type="Script" uid="uid://s5ssoq4urdfy" path="res://scripts/combat/core/CombatResolver.cs" id="12_resolver"]
+[ext_resource type="Script" uid="uid://tdhisdpsakhr" path="res://scripts/combat/core/AttackExecutor.cs" id="13_executor"]
+[ext_resource type="Script" uid="uid://bj7jn7q7b63cn" path="res://scripts/locomotion/MovementHost.cs" id="14_movehost"]
+[ext_resource type="Script" uid="uid://ckj88mieet1pl" path="res://scripts/effects/StatusEffectComponent.cs" id="15_status"]
+[ext_resource type="Script" uid="uid://c2i8rosct8p4y" path="res://scripts/effects/LaunchMotionComponent.cs" id="16_launch"]
+[ext_resource type="Script" uid="uid://cfr1dq0vi8drp" path="res://scripts/targeting/CombatAimController.cs" id="17_aim"]
+[ext_resource type="Script" uid="uid://dd7rbttuwj5xs" path="res://scripts/targeting/Targetable.cs" id="18_targetable"]
+[ext_resource type="Script" uid="uid://6g3i8lrlqejl" path="res://scripts/targeting/PlayerTargetingPreferences.cs" id="19_targetprefs"]
+[ext_resource type="Script" uid="uid://bxoko456l72k7" path="res://scripts/targeting/PlayerTargetingInputAdapter.cs" id="20_targetinput"]
+[ext_resource type="Script" uid="uid://d4dpf830wailp" path="res://scripts/presentation/SkillPhaseLabelPresenter.cs" id="21_skilllabel"]
+[ext_resource type="Script" uid="uid://c535hqlnuadxp" path="res://scripts/presentation/TargetLockIndicatorPresenter.cs" id="22_lockpresenter"]
+[ext_resource type="Script" uid="uid://cpe114rxdvshf" path="res://scripts/combat/ActorSkillLoadout.cs" id="23_skillloadout"]
+[ext_resource type="Script" uid="uid://b03junnu7mj7i" path="res://scripts/combat/PlayerSkillInputAdapter.cs" id="24_skillinput"]
+[ext_resource type="Script" uid="uid://cu5tv00l2ke5u" path="res://scripts/items/PlayerItemInputAdapter.cs" id="24_iteminput"]
+[ext_resource type="Script" uid="uid://d2ewf6lttkkae" path="res://scripts/presentation/FacingLabelController.cs" id="25_facinglabel"]
+[ext_resource type="Script" uid="uid://73o2sry253fs" path="res://scripts/combat/cooldowns/ActorSkillCooldownController.cs" id="26_skillcooldowns"]
+[ext_resource type="Script" path="res://scripts/equipment/PlayerWeaponInputAdapter.cs" id="27_weaponinput"]
+[ext_resource type="Script" uid="uid://dpuowj52gc4a6" path="res://scripts/combat/resources/ActorSkillResourceController.cs" id="28_skillresources"]
+[ext_resource type="Script" uid="uid://b0abupeml3mil" path="res://scripts/combat/casting/SkillChainTracker.cs" id="29_skillchain"]
+[ext_resource type="Script" uid="uid://deuvy5o3dq8tu" path="res://scripts/inventory/InventoryComponent.cs" id="32_inventory"]
+[ext_resource type="Script" uid="uid://utcfua1ykdm0" path="res://scripts/inventory/GridContainerComponent.cs" id="33_inventorygrid"]
+[ext_resource type="Resource" path="res://resources/inventory/player_inventory_container.tres" id="34_inventorydef"]
+[ext_resource type="Script" uid="uid://daxddhx75bjma" path="res://scripts/presentation/GameplayInputGate.cs" id="43_gameplayinputgate"]
+[ext_resource type="Script" uid="uid://bb2yfdg4un0ym" path="res://scripts/equipment/EquipmentComponent.cs" id="45_equipmentcomponent"]
+[ext_resource type="PackedScene" path="res://scenes/ui/game_ui_root.tscn" id="47_gameuiroot"]
+[ext_resource type="Script" uid="uid://bhtvpqvll8vvo" path="res://scripts/session/PlayerSessionBridge.cs" id="48_playersessionbridge"]
+[ext_resource type="Script" uid="uid://blkdndxfdoav2" path="res://scripts/session/PersistentContainerBridge.cs" id="49_persistentcontainerbridge"]
+[ext_resource type="Resource" path="res://resources/inventory/secure_container.tres" id="50_securecontainerdef"]
+[ext_resource type="Script" path="res://scripts/combat/WeaponSkillKnowledgeComponent.cs" id="51_weaponknowledge"]
+[ext_resource type="Script" path="res://scripts/inventory/search/DefaultContainerModifierComponent.cs" id="52_containermod"]
+[ext_resource type="Script" path="res://scripts/inventory/search/ActiveContainerModifierComponent.cs" id="53_activecontainermod"]
+[ext_resource type="Script" path="res://scripts/combat/firearms/FirearmCombatComponent.cs" id="54_firearmcombat"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 
@@ -64,6 +94,17 @@ outline_size = 8
 
 [node name="Stats" type="Node" parent="Components" unique_id=532962632]
 script = ExtResource("2_g2els")
+BaseAttackPower = 5.0
+
+[node name="Health" type="Node" parent="Components"]
+script = ExtResource("2_health")
+
+[node name="Armor" type="Node" parent="Components"]
+script = ExtResource("2_armor")
+
+[node name="DeathState" type="Node" parent="Components"]
+script = ExtResource("2_death")
+DisableNodePaths = [NodePath("Components/CombatAimController"), NodePath("Components/PlayerSkillInputAdapter"), NodePath("Components/PlayerTargetingInputAdapter"), NodePath("StateMachine")]
 
 [node name="Mover" type="Node" parent="Components" unique_id=1045465326]
 script = ExtResource("3_qhqgy")
@@ -74,19 +115,101 @@ script = ExtResource("3_forced")
 [node name="HitReaction" type="Node" parent="Components" unique_id=1183115105]
 script = ExtResource("11_hitreact")
 
-[node name="CombatResolver" type="Node" parent="Components"]
+[node name="CombatResolver" type="Node" parent="Components" unique_id=1149224633]
 script = ExtResource("12_resolver")
 
-[node name="AttackExecutor" type="Node" parent="Components"]
+[node name="AttackExecutor" type="Node" parent="Components" unique_id=637620587]
 script = ExtResource("13_executor")
 
-[node name="MovementHost" type="Node" parent="Components"]
+[node name="CombatAimController" type="Node" parent="Components"]
+script = ExtResource("17_aim")
+
+[node name="Targetable" type="Node" parent="Components"]
+script = ExtResource("18_targetable")
+
+[node name="PlayerTargetingPreferences" type="Node" parent="Components"]
+script = ExtResource("19_targetprefs")
+
+[node name="PlayerTargetingInputAdapter" type="Node" parent="Components"]
+script = ExtResource("20_targetinput")
+
+[node name="SkillLoadout" type="Node" parent="Components"]
+script = ExtResource("23_skillloadout")
+
+[node name="SkillCooldowns" type="Node" parent="Components"]
+script = ExtResource("26_skillcooldowns")
+
+[node name="SkillResources" type="Node" parent="Components"]
+script = ExtResource("28_skillresources")
+ResourceLabel = "精力"
+RegenerationPerSecond = 3.0
+
+[node name="SkillChainTracker" type="Node" parent="Components"]
+script = ExtResource("29_skillchain")
+
+[node name="PlayerSkillInputAdapter" type="Node" parent="Components"]
+script = ExtResource("24_skillinput")
+
+[node name="PlayerItemInputAdapter" type="Node" parent="Components"]
+script = ExtResource("24_iteminput")
+
+[node name="PlayerWeaponInputAdapter" type="Node" parent="Components"]
+script = ExtResource("27_weaponinput")
+
+[node name="FacingLabelController" type="Node" parent="Components"]
+script = ExtResource("25_facinglabel")
+
+[node name="SkillPhaseLabelPresenter" type="Node" parent="Components"]
+script = ExtResource("21_skilllabel")
+
+[node name="TargetLockIndicatorPresenter" type="Node" parent="Components"]
+script = ExtResource("22_lockpresenter")
+
+[node name="GameplayInputGate" type="Node" parent="Components"]
+script = ExtResource("43_gameplayinputgate")
+
+[node name="Equipment" type="Node" parent="Components"]
+script = ExtResource("45_equipmentcomponent")
+
+[node name="WeaponSkillKnowledge" type="Node" parent="Components"]
+script = ExtResource("51_weaponknowledge")
+
+[node name="ContainerModifiers" type="Node" parent="Components"]
+script = ExtResource("52_containermod")
+
+[node name="ActiveContainerModifiers" type="Node" parent="Components"]
+script = ExtResource("53_activecontainermod")
+
+[node name="FirearmCombat" type="Node" parent="Components"]
+script = ExtResource("54_firearmcombat")
+
+[node name="PlayerSessionBridge" type="Node" parent="Components"]
+script = ExtResource("48_playersessionbridge")
+
+[node name="Inventory" type="Node" parent="Components"]
+script = ExtResource("32_inventory")
+ContainerPaths = [NodePath("../InventoryMainContainer")]
+
+[node name="InventoryMainContainer" type="Node" parent="Components"]
+script = ExtResource("33_inventorygrid")
+Definition = ExtResource("34_inventorydef")
+
+[node name="SecureContainer" type="Node" parent="Components"]
+script = ExtResource("33_inventorygrid")
+Definition = ExtResource("50_securecontainerdef")
+
+[node name="MovementHost" type="Node" parent="Components" unique_id=244349605]
 script = ExtResource("14_movehost")
 
-[node name="StatusEffects" type="Node" parent="Components"]
+[node name="SecureContainerBridge" type="Node" parent="Components"]
+script = ExtResource("49_persistentcontainerbridge")
+ContainerKind = 1
+ContainerPath = NodePath("../SecureContainer")
+
+[node name="StatusEffects" type="Node" parent="Components" unique_id=1910993860]
 script = ExtResource("15_status")
 
-[node name="LaunchMotion" type="Node" parent="Components"]
+[node name="LaunchMotion" type="Node" parent="Components" unique_id=1299308744]
 script = ExtResource("16_launch")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1713224966]
@@ -112,6 +235,9 @@ script = ExtResource("4_cam")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1343850445]
 current = true
+fov = 28.0
+
+[node name="GameUiRoot" parent="." instance=ExtResource("47_gameuiroot")]
 
 [node name="Hurtbox" type="Area3D" parent="." unique_id=897152940]
 script = ExtResource("9_ur7pv")
@@ -134,3 +260,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042163134, 0.45, -0.9333709
 visible = false
 mesh = SubResource("BoxMesh_attack_preview")
 surface_material_override/0 = SubResource("StandardMaterial3D_attack_preview")
+

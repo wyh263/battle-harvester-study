@@ -1,0 +1,93 @@
+[gd_resource type="Resource" script_class="LootTableDefinition" load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootTableDefinition.cs" id="1_table"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootEntryDefinition.cs" id="2_entry"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootBucketDefinition.cs" id="3_bucket"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootRarityWeightDefinition.cs" id="4_rarity_weight"]
+[ext_resource type="Script" path="res://scripts/inventory/loot/LootCategoryWeightDefinition.cs" id="5_category_weight"]
+[ext_resource type="Resource" path="res://resources/items/test_scrap.tres" id="6_scrap"]
+[ext_resource type="Resource" path="res://resources/items/test_core.tres" id="7_core"]
+[ext_resource type="Resource" path="res://resources/items/weapon_skill_katana_phase_strike.tres" id="8_skill"]
+
+[sub_resource type="Resource" id="LootEntryDefinition_scrap"]
+script = ExtResource("2_entry")
+EntryId = "tech_scrap"
+Item = ExtResource("6_scrap")
+Weight = 9
+MinStackCount = 2
+MaxStackCount = 6
+
+[sub_resource type="Resource" id="LootEntryDefinition_core"]
+script = ExtResource("2_entry")
+EntryId = "tech_core"
+Item = ExtResource("7_core")
+Weight = 4
+AllowDuplicateRolls = false
+
+[sub_resource type="Resource" id="LootEntryDefinition_skill"]
+script = ExtResource("2_entry")
+EntryId = "tech_skill_manual"
+Item = ExtResource("8_skill")
+Weight = 2
+AllowDuplicateRolls = false
+
+[sub_resource type="Resource" id="LootRarityWeight_white"]
+script = ExtResource("4_rarity_weight")
+Rarity = 1
+Weight = 38.0
+
+[sub_resource type="Resource" id="LootRarityWeight_green"]
+script = ExtResource("4_rarity_weight")
+Rarity = 2
+Weight = 34.0
+
+[sub_resource type="Resource" id="LootRarityWeight_blue"]
+script = ExtResource("4_rarity_weight")
+Rarity = 3
+Weight = 20.0
+
+[sub_resource type="Resource" id="LootRarityWeight_purple"]
+script = ExtResource("4_rarity_weight")
+Rarity = 4
+Weight = 8.0
+
+[sub_resource type="Resource" id="LootCategoryWeight_generic"]
+script = ExtResource("5_category_weight")
+Category = 0
+Weight = 64.0
+
+[sub_resource type="Resource" id="LootCategoryWeight_skill"]
+script = ExtResource("5_category_weight")
+Category = 11
+Weight = 36.0
+
+[sub_resource type="Resource" id="LootBucket_white_generic"]
+script = ExtResource("3_bucket")
+BucketId = "white_generic"
+Rarity = 1
+Category = 0
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_scrap")])
+
+[sub_resource type="Resource" id="LootBucket_green_generic"]
+script = ExtResource("3_bucket")
+BucketId = "green_generic"
+Rarity = 2
+Category = 0
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_core")])
+
+[sub_resource type="Resource" id="LootBucket_blue_skill"]
+script = ExtResource("3_bucket")
+BucketId = "blue_skill"
+Rarity = 3
+Category = 11
+Entries = Array[ExtResource("2_entry")]([SubResource("LootEntryDefinition_skill")])
+
+[resource]
+script = ExtResource("1_table")
+LootTableId = "tech_case_loot_table"
+DisplayName = "Tech Case Loot Table"
+MinRollCount = 2
+MaxRollCount = 4
+RarityWeights = Array[ExtResource("4_rarity_weight")]([SubResource("LootRarityWeight_white"), SubResource("LootRarityWeight_green"), SubResource("LootRarityWeight_blue"), SubResource("LootRarityWeight_purple")])
+CategoryWeights = Array[ExtResource("5_category_weight")]([SubResource("LootCategoryWeight_generic"), SubResource("LootCategoryWeight_skill")])
+Buckets = Array[ExtResource("3_bucket")]([SubResource("LootBucket_white_generic"), SubResource("LootBucket_green_generic"), SubResource("LootBucket_blue_skill")])

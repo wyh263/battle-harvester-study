@@ -1,7 +1,7 @@
 using Godot;
 using System.Threading.Tasks;
 
-namespace BattleHarvesterStudy;
+namespace BattleHarvesterStudy.Reactions;
 
 public interface IHitReactionHost
 {

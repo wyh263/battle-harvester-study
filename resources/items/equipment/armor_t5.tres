@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/equipment/ArmorEquipmentDefinition.cs" id="2_equipment"]
+
+[sub_resource type="Resource" id="Equipment"]
+script = ExtResource("2_equipment")
+DisplayVariant = "T5"
+Tier = 5
+AllowedSlots = Array[int]([4])
+ArmorTier = 5
+MaxArmorPoint = 4000.0
+BaseAbsorbRate = 0.8
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "armor_t5"
+DisplayName = "T5 Armor"
+Category = 2
+GridWidth = 2
+GridHeight = 2
+CanRotate = false
+BaseValue = 1200000
+Tags = Array[String](["equipment", "armor", "tier5"])
+Equipment = SubResource("Equipment")

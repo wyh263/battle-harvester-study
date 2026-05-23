@@ -3,29 +3,42 @@
 Use this when starting a new conversation on the same project.
 
 ```text
-This is a continuation of the same Godot combat project. Do not change code immediately.
+This is a continuation of the same Godot gameplay project. Do not change code immediately.
 
 Please first read:
 - docs/architecture/combat_refactor.md
-- Systems/Combat/Core/SkillDefinition.cs
-- Systems/Combat/Core/AttackExecutor.cs
-- Systems/Combat/Core/Hitbox.cs
-- Systems/Combat/Core/CombatResolver.cs
-- Systems/Combat/Behaviors/AttackBehaviorDefinition.cs
-- Systems/Combat/Effects/EffectDefinition.cs
-- scripts/entities/Player.cs
+- docs/architecture/codex_collaboration_rules.md
+- scripts/items/ItemDefinition.cs
+- scripts/items/ItemInstance.cs
+- scripts/inventory/GridContainerDefinition.cs
+- scripts/inventory/GridContainerComponent.cs
+- scripts/inventory/InventoryComponent.cs
+- scripts/attributes/StatsComponent.cs
+- scripts/attributes/HealthComponent.cs
+- scripts/attributes/DeathStateController.cs
+- scripts/combat/core/SkillDefinition.cs
+- scripts/combat/core/AttackState.cs
+- scripts/combat/cooldowns/ActorSkillCooldownController.cs
+- scripts/combat/casting/SkillChainTracker.cs
+- scripts/presentation/CombatHudPresenter.cs
+- scripts/actors/Player.cs
+- scripts/actors/Dummy.cs
 
 Current stage:
-- The skill attack system has already been refactored into SkillDefinition / AttackBehaviorDefinition / EffectDefinition.
-- Cooldown, combo, and slot systems are not formally integrated yet.
-- The current temporary test keys are J / U / I / O.
+- The project already includes shared combat runtime, generic stats, health, death closure, a formal gameplay HUD, and a working item/container/inventory runtime with UI.
+- A temporary 3-hit basic combo exists.
+- The current temporary test inputs are attack / skill_u / skill_i / skill_o / skill_p.
+- Inventory currently has item definitions, item instances, grid containers, stacking, transfer, container access, loot filling, equipment slots, and active drag/drop style UI.
 
 Confirmed rules:
-1. Skill definitions only describe the skill itself. They do not own cooldown, combo, or slot input logic.
-2. Attack behavior is responsible for how the skill hits.
-3. Effects are responsible for what happens after a hit.
-4. Shapes are only submodules used by some attack behaviors, not the center of the whole combat system.
-5. When adding new skills, prefer resource composition and reuse of behaviors, shapes, and effects.
+1. Skill definitions only store static configuration. Runtime cooldown, resource, chain, health, and death state do not live inside SkillDefinition.
+2. Stats are actor runtime data, not player-only data.
+3. Current health is separate from max-health stats.
+4. Death is not defined by one side effect like "cannot be targeted"; it is a controller-owned consequence layer.
+5. HUD reads runtime results and should not own gameplay rules.
+6. When adding new systems, keep ownership shared where future enemies / bosses / AI will need the same capability.
+7. Item definitions and container definitions are static resources. Runtime stack counts, rotation, placement, and transfer belong to runtime classes.
+8. UI should not own inventory fit, stack, or transfer rules. Those belong to container / inventory runtime.
 
 Task requirements for this chat:
 - First summarize the real current architecture.
@@ -35,6 +48,8 @@ Task requirements for this chat:
 
 Do not:
 - Skip the architecture summary and jump straight into code edits.
-- Put cooldown or combo logic back into SkillDefinition.
-- Push all skill logic back into Hitbox.
+- Put runtime cooldown, combo, resource, health, or death state back into SkillDefinition.
+- Collapse stats and current health back into one class.
+- Push all gameplay logic back into one actor class.
+- Put container placement / stack / rotation validation into UI-only code.
 ```

@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-namespace BattleHarvesterStudy;
+namespace BattleHarvesterStudy.State;
 
 public partial class StateMachine : Node
 {
@@ -14,8 +14,8 @@ public partial class StateMachine : Node
 
 	public override void _Ready()
 	{
-		Player? entity = GetOwner<Player>();
-		if (entity == null)
+		Node3D? entityNode = GetOwner<Node3D>();
+		if (entityNode is not IStateActor actor)
 		{
 			return;
 		}
@@ -28,7 +28,7 @@ public partial class StateMachine : Node
 			}
 
 			_states[state.Name] = state;
-			state.Init(entity, this);
+			state.Init(entityNode, actor, this);
 		}
 
 		if (InitialStatePath.IsEmpty)

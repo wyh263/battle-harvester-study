@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SkillDefinition" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/core/SkillDefinition.cs" id="1_skill"]
+[ext_resource type="Resource" path="res://resources/combat/behaviors/basic_melee_behavior.tres" id="2_behavior"]
+[ext_resource type="Resource" path="res://resources/combat/effects/weapon_basic_damage_10.tres" id="3_damage"]
+
+[resource]
+script = ExtResource("1_skill")
+SkillId = "katana_basic_attack"
+DisplayName = "Katana Cut I"
+SkillTags = Array[String](["sharp", "katana", "basic_attack", "combo_starter"])
+ActionType = 0
+SkillMultiplier = 1.0
+AllowedWeaponArchetypeMask = 1
+AllowedWeaponFamilyMask = 2
+StartupLabel = "DRAW"
+ActiveLabel = "CUT"
+RecoveryLabel = "OPEN"
+StartupSeconds = 0.1
+ActiveSeconds = 0.12
+RecoverySeconds = 0.8
+BaseCooldownSeconds = 0.35
+BaseGlobalCooldownSeconds = 0.12
+CanDashCancelDuringRecovery = true
+AttackBehavior = ExtResource("2_behavior")
+Effects = [ExtResource("3_damage")]

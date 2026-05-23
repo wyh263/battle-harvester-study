@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/ItemDefinition.cs" id="1_item"]
+[ext_resource type="Script" path="res://scripts/equipment/FirearmWeaponDefinition.cs" id="2_firearm"]
+
+[sub_resource type="Resource" id="Equipment"]
+script = ExtResource("2_firearm")
+DisplayVariant = "T3"
+Kind = 1
+Tier = 3
+AllowedSlots = Array[int]([1, 2])
+GripType = 2
+WeaponArchetypeId = 4
+WeaponFamilyId = 32768
+WeaponSkillSlotCount = 2
+AllowedWeaponSkillTags = Array[String](["firearm_skill"])
+DamageSchool = 0
+DeliveryModel = 0
+BaseMultiplier = 1.0
+PenetrationTier = 3.2
+CritRate = 0.06
+CritDamage = 1.55
+FireMode = 2
+AmmoType = 2
+BaseDamagePerPellet = 17
+PelletCount = 1
+FireRate = 6.8
+MagazineCapacity = 24
+EffectiveRange = 11.0
+SevereFalloffRange = 16.0
+BaseHitChance = 56.0
+Precision = 66.0
+RecoilControl = 50.0
+Handling = 64.0
+HipFireAccuracy = 48.0
+CanAimWhileMoving = true
+ReloadDuration = 1.6
+AimBaseBonus = 9.0
+
+[resource]
+script = ExtResource("1_item")
+ItemId = "rifle_t3"
+DisplayName = "T3 Rifle"
+Category = 1
+GridWidth = 2
+GridHeight = 1
+CanRotate = true
+BaseValue = 68000
+LootRarity = 4
+Tags = Array[String](["equipment", "weapon", "firearm", "rifle", "tier3"])
+Equipment = SubResource("Equipment")

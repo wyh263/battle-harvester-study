@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WorldContainerArchetypeDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/inventory/WorldContainerArchetypeDefinition.cs" id="1_archetype"]
+[ext_resource type="Resource" path="res://resources/inventory/loot/medical_loot_table.tres" id="2_loot"]
+
+[resource]
+script = ExtResource("1_archetype")
+ArchetypeId = "container_medical_case"
+DisplayName = "医疗箱"
+VisualType = 3
+Tags = Array[int]([1])
+GridColumns = 6
+GridRows = 4
+RequiresSearch = true
+LootTable = ExtResource("2_loot")
+VisualSize = Vector3(1.2, 0.8, 0.8)
+VisualColor = Color(0.345098, 0.52549, 0.392157, 1)

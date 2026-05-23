@@ -1,0 +1,247 @@
+[gd_scene load_steps=72 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/world_container.tscn" id="2_container"]
+[ext_resource type="Script" uid="uid://n1grh5c4efqw" path="res://scripts/session/RunEntrance.cs" id="3_entrance"]
+[ext_resource type="Script" uid="uid://blkdndxfdoav2" path="res://scripts/session/PersistentContainerBridge.cs" id="4_persistent"]
+[ext_resource type="Resource" path="res://resources/inventory/warehouse_container.tres" id="5_warehouse"]
+[ext_resource type="PackedScene" path="res://scenes/dummy.tscn" id="6_dummy"]
+[ext_resource type="Script" uid="uid://dw0c4rcow5oi4" path="res://scripts/inventory/FixedContainerContentsComponent.cs" id="7_fixed"]
+[ext_resource type="Resource" path="res://resources/items/equipment/katana_t1.tres" id="8_katana_t1"]
+[ext_resource type="Resource" path="res://resources/items/equipment/katana_t2.tres" id="9_katana_t2"]
+[ext_resource type="Resource" path="res://resources/items/equipment/katana_t3.tres" id="10_katana_t3"]
+[ext_resource type="Resource" path="res://resources/items/equipment/katana_t4.tres" id="11_katana_t4"]
+[ext_resource type="Resource" path="res://resources/items/equipment/katana_t5.tres" id="12_katana_t5"]
+[ext_resource type="Resource" path="res://resources/items/equipment/gloves_t1.tres" id="13_gloves_t1"]
+[ext_resource type="Resource" path="res://resources/items/equipment/gloves_t2.tres" id="14_gloves_t2"]
+[ext_resource type="Resource" path="res://resources/items/equipment/gloves_t3.tres" id="15_gloves_t3"]
+[ext_resource type="Resource" path="res://resources/items/equipment/gloves_t4.tres" id="16_gloves_t4"]
+[ext_resource type="Resource" path="res://resources/items/equipment/gloves_t5.tres" id="17_gloves_t5"]
+[ext_resource type="Resource" path="res://resources/items/equipment/armor_t1.tres" id="18_armor_t1"]
+[ext_resource type="Resource" path="res://resources/items/equipment/armor_t2.tres" id="19_armor_t2"]
+[ext_resource type="Resource" path="res://resources/items/equipment/armor_t3.tres" id="20_armor_t3"]
+[ext_resource type="Resource" path="res://resources/items/equipment/armor_t4.tres" id="21_armor_t4"]
+[ext_resource type="Resource" path="res://resources/items/equipment/armor_t5.tres" id="22_armor_t5"]
+[ext_resource type="Resource" path="res://resources/items/repair_kit_t1.tres" id="23_repair_t1"]
+[ext_resource type="Resource" path="res://resources/items/repair_kit_t2.tres" id="23_repair_t2"]
+[ext_resource type="Resource" path="res://resources/items/repair_kit_t3.tres" id="24_repair_t3"]
+[ext_resource type="Resource" path="res://resources/items/repair_kit_t4.tres" id="24_repair_t4"]
+[ext_resource type="Resource" path="res://resources/items/repair_kit_t5.tres" id="25_repair_t5"]
+[ext_resource type="Resource" path="res://resources/items/equipment/greatsword_t1.tres" id="26_greatsword_t1"]
+[ext_resource type="Resource" path="res://resources/items/equipment/greatsword_t2.tres" id="27_greatsword_t2"]
+[ext_resource type="Resource" path="res://resources/items/equipment/greatsword_t3.tres" id="28_greatsword_t3"]
+[ext_resource type="Resource" path="res://resources/items/equipment/greatsword_t4.tres" id="29_greatsword_t4"]
+[ext_resource type="Resource" path="res://resources/items/equipment/greatsword_t5.tres" id="30_greatsword_t5"]
+[ext_resource type="Resource" path="res://resources/items/equipment/dagger_t1.tres" id="31_dagger_t1"]
+[ext_resource type="Resource" path="res://resources/items/equipment/dagger_t2.tres" id="32_dagger_t2"]
+[ext_resource type="Resource" path="res://resources/items/equipment/dagger_t3.tres" id="33_dagger_t3"]
+[ext_resource type="Resource" path="res://resources/items/equipment/dagger_t4.tres" id="34_dagger_t4"]
+[ext_resource type="Resource" path="res://resources/items/equipment/dagger_t5.tres" id="35_dagger_t5"]
+[ext_resource type="Resource" path="res://resources/items/weapon_skill_katana_draw_counter.tres" id="36_weapon_skill_katana"]
+[ext_resource type="Resource" path="res://resources/items/weapon_skill_greatsword_armor_cleave.tres" id="37_weapon_skill_greatsword"]
+[ext_resource type="Resource" path="res://resources/items/weapon_skill_dagger_bleed_rush.tres" id="38_weapon_skill_dagger"]
+[ext_resource type="Resource" path="res://resources/items/weapon_skill_katana_phase_strike.tres" id="39_weapon_skill_katana_2"]
+[ext_resource type="Resource" path="res://resources/items/weapon_skill_greatsword_guard_crash.tres" id="40_weapon_skill_greatsword_2"]
+[ext_resource type="Resource" path="res://resources/items/weapon_skill_dagger_shadow_flurry.tres" id="41_weapon_skill_dagger_2"]
+[ext_resource type="Resource" path="res://resources/items/search_medical_kit.tres" id="42_search_medical"]
+[ext_resource type="Resource" path="res://resources/items/weapon_manifest_probe.tres" id="43_weapon_probe"]
+[ext_resource type="Resource" path="res://resources/items/tech_filter_chip.tres" id="44_tech_chip"]
+[ext_resource type="Resource" path="res://resources/items/equipment/shotgun_t3.tres" id="45_shotgun_t3"]
+[ext_resource type="Resource" path="res://resources/items/equipment/rifle_t3.tres" id="46_rifle_t3"]
+[ext_resource type="Resource" path="res://resources/items/equipment/sniper_t3.tres" id="47_sniper_t3"]
+[ext_resource type="Resource" path="res://resources/items/ammo/shotgun_ammo_t1.tres" id="48_shotgun_ammo_t1"]
+[ext_resource type="Resource" path="res://resources/items/ammo/shotgun_ammo_t2.tres" id="49_shotgun_ammo_t2"]
+[ext_resource type="Resource" path="res://resources/items/ammo/shotgun_ammo_t3.tres" id="50_shotgun_ammo_t3"]
+[ext_resource type="Resource" path="res://resources/items/ammo/shotgun_ammo_t4.tres" id="51_shotgun_ammo_t4"]
+[ext_resource type="Resource" path="res://resources/items/ammo/shotgun_ammo_t5.tres" id="52_shotgun_ammo_t5"]
+[ext_resource type="Resource" path="res://resources/items/ammo/rifle_ammo_t1.tres" id="53_rifle_ammo_t1"]
+[ext_resource type="Resource" path="res://resources/items/ammo/rifle_ammo_t2.tres" id="54_rifle_ammo_t2"]
+[ext_resource type="Resource" path="res://resources/items/ammo/rifle_ammo_t3.tres" id="55_rifle_ammo_t3"]
+[ext_resource type="Resource" path="res://resources/items/ammo/rifle_ammo_t4.tres" id="56_rifle_ammo_t4"]
+[ext_resource type="Resource" path="res://resources/items/ammo/rifle_ammo_t5.tres" id="57_rifle_ammo_t5"]
+[ext_resource type="Resource" path="res://resources/items/ammo/sniper_ammo_t1.tres" id="58_sniper_ammo_t1"]
+[ext_resource type="Resource" path="res://resources/items/ammo/sniper_ammo_t2.tres" id="59_sniper_ammo_t2"]
+[ext_resource type="Resource" path="res://resources/items/ammo/sniper_ammo_t3.tres" id="60_sniper_ammo_t3"]
+[ext_resource type="Resource" path="res://resources/items/ammo/sniper_ammo_t4.tres" id="61_sniper_ammo_t4"]
+[ext_resource type="Resource" path="res://resources/items/ammo/sniper_ammo_t5.tres" id="62_sniper_ammo_t5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
+sky_top_color = Color(0.247059, 0.537255, 0.74902, 1)
+sky_horizon_color = Color(0.85098, 0.917647, 0.952941, 1)
+ground_bottom_color = Color(0.0980392, 0.117647, 0.145098, 1)
+ground_horizon_color = Color(0.290196, 0.360784, 0.301961, 1)
+
+[sub_resource type="Sky" id="Sky_home"]
+sky_material = SubResource("ProceduralSkyMaterial_sky")
+
+[sub_resource type="Environment" id="Environment_home"]
+background_mode = 2
+sky = SubResource("Sky_home")
+ambient_light_source = 3
+ambient_light_energy = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ground"]
+size = Vector3(26, 0.5, 26)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+albedo_color = Color(0.258824, 0.372549, 0.247059, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_portal"]
+size = Vector3(1.4, 2.4, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_portal"]
+albedo_color = Color(0.188235, 0.647059, 0.827451, 1)
+emission_enabled = true
+emission = Color(0.356863, 0.866667, 1, 1)
+emission_energy_multiplier = 0.8
+
+[node name="HomeBase" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_home")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 7, 0)
+light_energy = 1.2
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_ground")
+surface_material_override/0 = SubResource("StandardMaterial3D_ground")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
+
+[node name="WeaponChest" parent="." instance=ExtResource("2_container")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0, 0, -1.0)
+PrintContentsOnInteract = false
+
+[node name="StatusLabel" parent="WeaponChest/Visuals" index="1"]
+text = "武器"
+
+[node name="GridContainer" parent="WeaponChest/Components" index="0"]
+Definition = ExtResource("5_warehouse")
+
+[node name="ContainerLoot" parent="WeaponChest/Components" index="2"]
+FillOnReady = false
+
+[node name="InitialWeaponContents" type="Node" parent="WeaponChest"]
+script = ExtResource("7_fixed")
+ContainerPath = NodePath("../Components/GridContainer")
+Items = Array[Resource]([ExtResource("8_katana_t1"), ExtResource("9_katana_t2"), ExtResource("10_katana_t3"), ExtResource("11_katana_t4"), ExtResource("12_katana_t5"), ExtResource("26_greatsword_t1"), ExtResource("27_greatsword_t2"), ExtResource("28_greatsword_t3"), ExtResource("29_greatsword_t4"), ExtResource("30_greatsword_t5"), ExtResource("31_dagger_t1"), ExtResource("32_dagger_t2"), ExtResource("33_dagger_t3"), ExtResource("34_dagger_t4"), ExtResource("35_dagger_t5"), ExtResource("45_shotgun_t3"), ExtResource("46_rifle_t3"), ExtResource("47_sniper_t3")])
+ClearContainerBeforeFill = true
+FillOnlyWhenEmpty = false
+
+[node name="ArmorChest" parent="." instance=ExtResource("2_container")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, -1.0)
+PrintContentsOnInteract = false
+
+[node name="StatusLabel" parent="ArmorChest/Visuals" index="1"]
+text = "护甲"
+
+[node name="GridContainer" parent="ArmorChest/Components" index="0"]
+Definition = ExtResource("5_warehouse")
+
+[node name="ContainerLoot" parent="ArmorChest/Components" index="2"]
+FillOnReady = false
+
+[node name="InitialArmorContents" type="Node" parent="ArmorChest"]
+script = ExtResource("7_fixed")
+ContainerPath = NodePath("../Components/GridContainer")
+Items = Array[Resource]([ExtResource("13_gloves_t1"), ExtResource("14_gloves_t2"), ExtResource("15_gloves_t3"), ExtResource("16_gloves_t4"), ExtResource("17_gloves_t5"), ExtResource("18_armor_t1"), ExtResource("19_armor_t2"), ExtResource("20_armor_t3"), ExtResource("21_armor_t4"), ExtResource("22_armor_t5")])
+ClearContainerBeforeFill = true
+FillOnlyWhenEmpty = false
+
+[node name="SkillChest" parent="." instance=ExtResource("2_container")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0, -1.0)
+PrintContentsOnInteract = false
+
+[node name="StatusLabel" parent="SkillChest/Visuals" index="1"]
+text = "技能"
+
+[node name="GridContainer" parent="SkillChest/Components" index="0"]
+Definition = ExtResource("5_warehouse")
+
+[node name="ContainerLoot" parent="SkillChest/Components" index="2"]
+FillOnReady = false
+
+[node name="InitialSkillContents" type="Node" parent="SkillChest"]
+script = ExtResource("7_fixed")
+ContainerPath = NodePath("../Components/GridContainer")
+Items = Array[Resource]([ExtResource("36_weapon_skill_katana"), ExtResource("39_weapon_skill_katana_2"), ExtResource("37_weapon_skill_greatsword"), ExtResource("40_weapon_skill_greatsword_2"), ExtResource("38_weapon_skill_dagger"), ExtResource("41_weapon_skill_dagger_2")])
+ClearContainerBeforeFill = true
+FillOnlyWhenEmpty = false
+
+[node name="ItemChest" parent="." instance=ExtResource("2_container")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 0, -1.0)
+PrintContentsOnInteract = false
+
+[node name="StatusLabel" parent="ItemChest/Visuals" index="1"]
+text = "道具"
+
+[node name="GridContainer" parent="ItemChest/Components" index="0"]
+Definition = ExtResource("5_warehouse")
+
+[node name="ContainerLoot" parent="ItemChest/Components" index="2"]
+FillOnReady = false
+
+[node name="InitialItemContents" type="Node" parent="ItemChest"]
+script = ExtResource("7_fixed")
+ContainerPath = NodePath("../Components/GridContainer")
+Items = Array[Resource]([ExtResource("23_repair_t1"), ExtResource("23_repair_t2"), ExtResource("24_repair_t3"), ExtResource("24_repair_t4"), ExtResource("25_repair_t5"), ExtResource("42_search_medical"), ExtResource("43_weapon_probe"), ExtResource("44_tech_chip"), ExtResource("48_shotgun_ammo_t1"), ExtResource("49_shotgun_ammo_t2"), ExtResource("50_shotgun_ammo_t3"), ExtResource("51_shotgun_ammo_t4"), ExtResource("52_shotgun_ammo_t5"), ExtResource("53_rifle_ammo_t1"), ExtResource("54_rifle_ammo_t2"), ExtResource("55_rifle_ammo_t3"), ExtResource("56_rifle_ammo_t4"), ExtResource("57_rifle_ammo_t5"), ExtResource("58_sniper_ammo_t1"), ExtResource("59_sniper_ammo_t2"), ExtResource("60_sniper_ammo_t3"), ExtResource("61_sniper_ammo_t4"), ExtResource("62_sniper_ammo_t5")])
+StackCounts = Array[int]([1, 1, 1, 1, 1, 1, 1, 1, 40, 40, 40, 40, 40, 60, 60, 60, 60, 60, 30, 30, 30, 30, 30])
+ClearContainerBeforeFill = true
+FillOnlyWhenEmpty = false
+
+[node name="DeployEntrance" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, 0.6)
+script = ExtResource("3_entrance")
+RunScenePath = "res://scenes/run_map_01.tscn"
+
+[node name="Visuals" type="Node3D" parent="DeployEntrance"]
+
+[node name="Portal" type="MeshInstance3D" parent="DeployEntrance/Visuals"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.2, 0)
+mesh = SubResource("BoxMesh_portal")
+surface_material_override/0 = SubResource("StandardMaterial3D_portal")
+
+[node name="StatusLabel" type="Label3D" parent="DeployEntrance/Visuals"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 1.5, 0)
+text = "出击"
+
+[node name="TierDummyI" parent="." instance=ExtResource("6_dummy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 3.0)
+
+[node name="EquipmentLoadout" parent="TierDummyI/Components" index="1"]
+WeaponSlot1Definition = ExtResource("8_katana_t1")
+GlovesDefinition = ExtResource("13_gloves_t1")
+ArmorDefinition = ExtResource("18_armor_t1")
+FacingLabelOverride = "Tier I Light"
+
+[node name="TierDummyIII" parent="." instance=ExtResource("6_dummy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 0.8)
+
+[node name="EquipmentLoadout" parent="TierDummyIII/Components" index="1"]
+WeaponSlot1Definition = ExtResource("28_greatsword_t3")
+GlovesDefinition = ExtResource("15_gloves_t3")
+ArmorDefinition = ExtResource("20_armor_t3")
+FacingLabelOverride = "Tier III Greatsword"
+
+[node name="TierDummyV" parent="." instance=ExtResource("6_dummy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -1.4)
+
+[node name="EquipmentLoadout" parent="TierDummyV/Components" index="1"]
+WeaponSlot1Definition = ExtResource("12_katana_t5")
+GlovesDefinition = ExtResource("17_gloves_t5")
+ArmorDefinition = ExtResource("22_armor_t5")
+FacingLabelOverride = "Tier V Heavy"
+
+[node name="FirearmDummy" parent="." instance=ExtResource("6_dummy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 3.0)
+
+[node name="EquipmentLoadout" parent="FirearmDummy/Components" index="1"]
+WeaponSlot1Definition = ExtResource("46_rifle_t3")
+GlovesDefinition = ExtResource("15_gloves_t3")
+ArmorDefinition = ExtResource("20_armor_t3")
+FacingLabelOverride = "Rifle Test"
